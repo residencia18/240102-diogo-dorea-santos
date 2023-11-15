@@ -240,5 +240,144 @@ Os tipos de dados primitivos mais comuns em Java são:
 subclasse a partir de uma classe existente. Faça um paralelo com C++, 
 apresentando 5 exemplos.
 
+R: o conceito de herança em Java (assim como em C++) é fundamental na orientação a objetos.
+Em herança, uma classe pode herdar atributos e métodos de outra classe, chamada de superclasse ou classe pai.
+A diferença principal está na forma como a herança é declarada:
+
+em Java usamos a palavra-chave 'extends'.
+
+Exemplo Java:
+
+```
+class Animal {
+    public void emitirSom() {
+        System.out.println("Som do animal");
+    }
+}
+
+// Subclasse que herda da classe Animal em Java
+class Cachorro extends Animal {
+    public void latir() {
+        System.out.println("Au au!");
+    }
+}
+```
+Em C++ Utilizamos os dois pontos ':' como no exemplo:
+
+```
+class Animal {
+public:
+    void emitirSom() {
+        std::cout << "Som do animal" << std::endl;
+    }
+};
+
+// Subclasse que herda da classe Animal em C++
+class Cachorro : public Animal {
+public:
+    void latir() {
+        std::cout << "Au au!" << std::endl;
+    }
+};
+```
+
+Em Java, para chamar o construtor da superclasse a partir de uma subclasse, usamos a palavra-chave super() no construtor da subclasse.
+
+```
+class Animal {
+    String tipo;
+
+    public Animal(String tipo) {
+        this.tipo = tipo;
+    }
+}
+
+// Subclasse que herda da classe Animal em Java
+class Cachorro extends Animal {
+    String raca;
+
+    public Cachorro(String tipo, String raca) {
+        super(tipo); // Chama o construtor da superclasse
+        this.raca = raca;
+    }
+}
+```
+
+Em C++, a chamada do construtor da superclasse é feita de forma implícita através da lista de inicialização do construtor da subclasse.
+```
+#include <iostream>
+#include <string>
+
+// Classe pai ou superclasse em C++
+class Animal {
+protected:
+    std::string tipo;
+
+public:
+    Animal(std::string tipo) : tipo(tipo) {}
+};
+
+// Subclasse que herda da classe Animal em C++
+class Cachorro : public Animal {
+    std::string raca;
+
+public:
+    Cachorro(std::string tipo, std::string raca) : Animal(tipo), raca(raca) {}
+};
+```	
+
+Em Java, a sobreposição de métodos é feita adicionando a anotação @Override acima do método na subclasse.
+```
+class Animal {
+    public void fazerSom() {
+        System.out.println("Som do animal");
+    }
+}
+
+// Subclasse que herda da classe Animal em Java
+class Cachorro extends Animal {
+    @Override
+    public void fazerSom() {
+        System.out.println("Au au!");
+    }
+}
+
+```
+Em C++, a sobreposição de métodos é feita implicitamente.
+```
+#include <iostream>
+
+// Classe pai ou superclasse em C++
+class Animal {
+public:
+    void fazerSom() {
+        std::cout << "Som do animal" << std::endl;
+    }
+};
+
+// Subclasse que herda da classe Animal em C++
+class Cachorro : public Animal {
+public:
+    void fazerSom() { // Método sobreposto
+        std::cout << "Au au!" << std::endl;
+    }
+};
+
+```
+
 4. Quando declaramos uma variável em Java, temos, na verdade, um ponteiro. 
 Em C++ é diferente. Discorra sobre esse aspecto.
+
+R:Em resumo, em Java, as variáveis de classe são referências a objetos,
+ enquanto em C++, as variáveis de classe são o próprio objeto.
+Isso influencia diretamente a maneira como a memória é gerenciada e manipulada em ambas as linguagens.
+
+
+```
+// Declaração de uma variável em Java e em C++
+MinhaClasse objeto;
+```
+Em Java 'objeto' é uma referência a um objeto do tipo MinhaClasse.
+Isso significa que objeto aponta para um objeto em algum lugar da memória.
+Em C++, objeto é o próprio objeto da classe MinhaClasse.
+A memória é alocada para esse objeto no momento da declaração.
