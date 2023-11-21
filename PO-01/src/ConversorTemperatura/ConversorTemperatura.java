@@ -23,21 +23,19 @@ public class ConversorTemperatura {
         int escolha = sc.nextInt();
 
         double temperatura, resultado;
-        String unidadeOrigem, unidadeDestino;
+        String  unidadeDestino;
                 
         switch (escolha) {
             case 1:
                 System.out.println("Digite a temperatura em Celsius:");
                 temperatura = sc.nextDouble();
                 resultado = celsiusParaFahrenheit(temperatura);
-                unidadeOrigem = "Celsius";
                 unidadeDestino = "Fahrenheit";
                 break;
             case 2:
                 System.out.println("Digite a temperatura em Fahrenheit:");
                 temperatura = sc.nextDouble();
                 resultado = fahrenheitParaCelsius(temperatura);
-                unidadeOrigem = "Fahrenheit";
                 unidadeDestino = "Celsius";
                 break;
             default:
@@ -46,7 +44,7 @@ public class ConversorTemperatura {
                 return;
         }
 
-        System.out.println("A temperatura em " + unidadeDestino + " é: " + resultado + " " + unidadeDestino);
+        System.out.println("A temperatura em " + unidadeDestino + " é: " + resultado + " Graus " + unidadeDestino);
         sc.close();
     }
 
