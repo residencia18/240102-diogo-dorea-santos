@@ -27,6 +27,7 @@ public class ManipulaArray {
         //System.out.println("\n");
         somaArray(numerosAleatorios);
         menorValor(numerosAleatorios);
+        maiorValor(numerosAleatorios);
     }
 
     public static void exibirArray(int[] array) {
@@ -62,7 +63,17 @@ public class ManipulaArray {
                 menor = num;
             }
         }
-        System.out.println("Menor valor do array: " + menor);
+        System.out.println("Menor valor do array: " + menor+"");
+    }
+    
+    public static void maiorValor(int[] array) {
+        int maior = array[0];
+        for (int num : array) {
+            if (num > maior) {
+                maior = num;
+            }
+        }
+        System.out.println("Maior valor do array: " + maior+"");
     }
 
 }
