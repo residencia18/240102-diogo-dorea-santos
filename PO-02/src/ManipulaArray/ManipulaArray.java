@@ -24,12 +24,16 @@ public class ManipulaArray {
         int[] numerosAleatorios = gerarNumerosAleatorios(tamanho);
         System.out.println("\nArray de números aleatórios:");
         exibirArray(numerosAleatorios);
+        //System.out.println("\n");
+        somaArray(numerosAleatorios);
+        menorValor(numerosAleatorios);
     }
 
     public static void exibirArray(int[] array) {
         for (int num : array) {
             System.out.print(num + " ");
         }
+        System.out.println("");
     }
 
     public static int[] gerarNumerosAleatorios(int tamanho) {
@@ -37,9 +41,28 @@ public class ManipulaArray {
         int[] numerosAleatorios = new int[tamanho];
 
         for (int i = 0; i < tamanho; i++) {
-            numerosAleatorios[i] = random.nextInt(100); // Gera números aleatórios até 100, você pode ajustar conforme necessário
+            numerosAleatorios[i] = random.nextInt(100);
         }
 
         return numerosAleatorios;
     }
+    
+    public static void somaArray(int[] array) {
+        int soma = 0;
+        for (int num : array) {
+            soma += num;
+        }
+        System.out.println("Soma dos números do array: " + soma+"");
+    }
+    
+    public static void menorValor(int[] array) {
+        int menor = array[0];
+        for (int num : array) {
+            if (num < menor) {
+                menor = num;
+            }
+        }
+        System.out.println("Menor valor do array: " + menor);
+    }
+
 }
