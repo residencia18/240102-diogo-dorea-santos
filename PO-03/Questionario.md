@@ -36,3 +36,26 @@ public void ExceptionDifference() {
 
 * É uma estrutura usada para lidar com exceções, permite que você controle o fluxo do programa, capturando e tratando exceções que podem ocorrer durante a execução do código.
 * Dentro do bloco try fica o código que pode gerar uma exceção, se ocorrer, o fluxo do programa será desviado para o bloco catch correspondente. O bloco catch captura exceções específicas que podem ter sido lançadas no bloco try. Você pode ter múltiplos blocos catch para diferentes tipos de exceções. Se uma exceção correspondente for lançada dentro do bloco try, o controle do programa será transferido para o bloco catch apropriado.
+
+### 5. Quando é apropriado criar suas próprias exceções personalizadas em Java e como você pode fazer isso? Dê um exemplo de quando e por que você criaria uma exceção personalizada.
+
+* Em situações específicas em seu código que não podem ser adequadamente representadas por exceções existentes na biblioteca padrão ou então quando deseja comunicar erros ou situações excepcionais de maneira mais precisa e específica.
+* Suponha que você esteja desenvolvendo um sistema de gerenciamento de uma biblioteca e tem uma classe Livro com um método definirNumeroDePaginas(int numeroPaginas). Se essa classe não permite livros com menos de 10 páginas é possivel criar uma exceção personalizada para lidar com isso:
+```
+class Livro {
+    private int numeroPaginas;
+
+    public void definirNumeroDePaginas(int numeroPaginas) throws LivroInvalidoException {
+        if (numeroPaginas < 10) {
+            throw new LivroInvalidoException("Um livro deve ter pelo menos 10 páginas.");
+        }
+        this.numeroPaginas = numeroPaginas;
+    }
+}
+class LivroInvalidoException extends Exception {
+    public LivroInvalidoException(String mensagem) {
+        super(mensagem);
+    }
+}
+
+```
