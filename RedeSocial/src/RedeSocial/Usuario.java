@@ -9,21 +9,11 @@ public class Usuario {
 	private String postagem;
 	private int quantidadeDePostagens, pontuacao;
 	
-	//COntrutor para o passo 1 do exercicio
-	/*
-	public Usuario() {
-		postagens = new ArrayList<String>();
-		this.setQuantidadeDePostagens(0);
-		this.setPontuacao(0);
-	}
-	*/
-	
 	public Usuario(String _nomeUsuario) {
 		postagens = new ArrayList<String>();
-		this.setQuantidadeDePostagens(0);
 		this.setPontuacao(0);
 		this.setNome(_nomeUsuario);
-	}
+	}	
 
 	public String getNome() {
 		return nome;
@@ -69,38 +59,20 @@ public class Usuario {
 		this.pontuacao = pontuacao;
 	}
 
-	public void setQuantidadeDePostagens(int quantidadeDePostagens) {
-		this.quantidadeDePostagens = quantidadeDePostagens;
+	public void adicionaPostagens(String post) {
+		postagens.add(post);
+		quantidadeDePostagens++;		
 	}
 
-	public void adicionaPostagens(String post) {
-		quantidadeDePostagens++;		
+	public void removePostagens(String post) {
+		postagens.remove(post);
+		quantidadeDePostagens--;
 	}
 	public void alteraPontuacao(int delta) {
 		pontuacao += delta;
 	}
 	
-		
-	//Metodo main
 	public static void main(String[] args) {
-		
-		//Passo 1 do exercicio
-		/*
-		Usuario usuario = new Usuario();
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Digite o nome do usuario: ");
-		usuario.setNome(sc.nextLine());
-		System.out.println("Digite o email do usuario: ");
-		usuario.setEmail(sc.nextLine());
-		System.out.println("Digite o nacionalidade do usuario: ");
-		usuario.setNacionalidade(sc.nextLine());
-		System.out.println("Digite a sua postagem: ");
-		usuario.setPostagem(sc.nextLine());
-		usuario.adicionaPostagens(usuario.getPostagem());
-		*/
-		
-		//Passo 2 do exercicio
 		
 		ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
 		Scanner sc = new Scanner(System.in);
@@ -108,8 +80,7 @@ public class Usuario {
 		String sn;
 		do {
 			System.out.println("Digite o nome do usuário: ");
-			String nomeUsuario = sc.nextLine();
-			Usuario usuario = new Usuario(nomeUsuario);
+			Usuario usuario = new Usuario(sc.nextLine());
 			System.out.println("Digite o email do usuario: ");
 			usuario.setEmail(sc.nextLine());
 			System.out.println("Digite o nacionalidade do usuario: ");
