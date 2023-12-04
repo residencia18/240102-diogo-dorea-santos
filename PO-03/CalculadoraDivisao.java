@@ -1,6 +1,14 @@
 public class Calculadora {
     public static void main(String[] args) {
+        int a = 10;
+        int b = 0;
         
+        try {
+            int resultadoInteiro = dividirInteiro(a, b);
+            System.out.println("O resultado da divisão inteira é: " + resultadoInteiro);
+        } catch (DivisionByZeroException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
     
     public static int dividirInteiro(int a, int b) throws DivisionByZeroException {
