@@ -31,3 +31,8 @@ public void ExceptionDifference() {
 * catch: Este bloco é usado para capturar exceções específicas que podem ser lançadas no bloco try. Você pode ter múltiplos blocos catch para diferentes tipos de exceções.
 * finally: O bloco finally é opcional e é usado para conter o código que deve ser executado independentemente de uma exceção ser lançada ou não.
 * Praticas comuns: É recomendado capturar exceçções especificas, com tratamentos diferenciados. lancar uma mensagem de erro especifica da exceção e registrar essas inforações em um log, ajuda na depuração do codigo. Não ignore exceções utilizando um bloco catch vazio.
+
+### 4. O que é o bloco "try-catch" em Java? Como ele funciona e por que é importante usá-lo ao lidar com exceções?
+
+* É uma estrutura usada para lidar com exceções, permite que você controle o fluxo do programa, capturando e tratando exceções que podem ocorrer durante a execução do código.
+* Dentro do bloco try fica o código que pode gerar uma exceção, se ocorrer, o fluxo do programa será desviado para o bloco catch correspondente. O bloco catch captura exceções específicas que podem ter sido lançadas no bloco try. Você pode ter múltiplos blocos catch para diferentes tipos de exceções. Se uma exceção correspondente for lançada dentro do bloco try, o controle do programa será transferido para o bloco catch apropriado.
