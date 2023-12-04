@@ -9,6 +9,16 @@ public class Calculadora {
         } catch (DivisionByZeroException e) {
             System.out.println("Erro: " + e.getMessage());
         }
+
+        float c = 10.5f;
+        float d = 0.0f;
+        
+        try {
+            float resultadoFloat = dividirFloat(c, d);
+            System.out.println("O resultado da divisão float é: " + resultadoFloat);
+        } catch (DivisionByZeroException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
     
     public static int dividirInteiro(int a, int b) throws DivisionByZeroException {
