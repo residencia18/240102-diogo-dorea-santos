@@ -11,10 +11,11 @@ public class Veiculo {
 	boolean eletrico;
 
 	// Construtor
-	public Veiculo(String modelo, String cor, int ano) {
+	public Veiculo(String modelo, String cor, int ano, boolean _eletrico) {
 	    this.modelo = modelo;
 	    this.cor = cor;
 	    this.ano = ano;
+	    this.eletrico = _eletrico;
 	}
 	// Getters e Setters
 
@@ -61,13 +62,14 @@ public class Veiculo {
 
 	public static void main(String[] args) {
 	    
-	    Carro meuCarro = new Carro("Fiat", "Preto", 2023);
-	    Moto minhaMoto = new Moto("Honda", "Vermelho", 2022);
+	    Carro meuCarro = new Carro("Uno", "Preto", 2023, true);
+	    Moto minhaMoto = new Moto("Nmax", "Vermelho", 2022, false);
 
 	    // Polimorfismo
 	    Veiculo veiculo1 = meuCarro;
 	    Veiculo veiculo2 = minhaMoto;
 
+	    /*
 	    veiculo1.ligar();
 	    veiculo1.acelerar();
 	    //Carro não sobrescreve metodo parar, logo, o acesso é para o metodo da superclasse. 
@@ -82,13 +84,20 @@ public class Veiculo {
 	    // Acesso a métodos específicos
 	    ((Carro) veiculo1).abrirPortas();
 	    ((Moto) veiculo2).descerMacaco();
+	    */
+	    Garagem garagemEletrica = new Garagem(true);
+	    Garagem garagemComum = new Garagem(false);
+	    
+	    veiculo1.estacionar(garagemEletrica);
+	    veiculo2.estacionar(garagemComum);
+	    
 	}
 }
 
 
 class Carro extends Veiculo {
-public Carro(String modelo, String cor, int ano) {
-    super(modelo, cor, ano);
+public Carro(String _modelo, String _cor, int _ano, boolean _eletrico) {
+    super(_modelo, _cor, _ano, _eletrico);
 }
 
 @Override
@@ -108,8 +117,8 @@ public void abrirPortas() {
 }
 
 class Moto extends Veiculo {
-public Moto(String modelo, String cor, int ano) {
-    super(modelo, cor, ano);
+public Moto(String _modelo, String _cor, int _ano, boolean _eletrico) {
+    super(_modelo, _cor, _ano, _eletrico);
 }
 
 @Override
@@ -128,6 +137,8 @@ public void descerMacaco() {
 }
 }
 
+
+
 class Garagem {
 	
     private List<Veiculo> veiculos;
@@ -140,7 +151,12 @@ class Garagem {
 
     public void estacionar(Veiculo veiculo) {
         veiculos.add(veiculo);
-        System.out.println(veiculo.getModelo() + " estacionado na garagem.");
+        if (this.tomadaEletrica && veiculo.eletrico) {
+        	System.out.println(veiculo.getModelo() + " carregando na garagem.");
+        	} else {
+        		System.out.println(veiculo.getModelo() + " estacionado na garagem.");
+        	}
+        
     }
 
     public void remover(Veiculo veiculo) {
