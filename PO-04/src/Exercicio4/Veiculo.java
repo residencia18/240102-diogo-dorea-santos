@@ -8,6 +8,7 @@ public class Veiculo {
 	private String modelo;
 	private String cor;
 	private int ano;
+	boolean eletrico;
 
 	// Construtor
 	public Veiculo(String modelo, String cor, int ano) {
@@ -40,6 +41,10 @@ public class Veiculo {
 	public void setAno(int ano) {
 	    this.ano = ano;
 	}
+	
+	public void estacionar(Garagem _garagem) {
+        _garagem.estacionar(this);
+    }
 
 	// Métodos comuns
 	public void acelerar() {
