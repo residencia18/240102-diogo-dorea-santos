@@ -1,0 +1,1 @@
+Texto ssspara ser copiado para o arquivo destino.txt
