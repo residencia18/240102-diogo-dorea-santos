@@ -1,0 +1,554 @@
+commit 2bf68bf079ce453b50e9c05b79d1e956989abb67
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Jan 7 18:24:28 2024 -0300
+
+    Diagrama de Classe Base PDF
+
+ Arrays e Listas/.classpath                         |  10 ++++
+ Arrays e Listas/.gitignore                         |   1 +
+ Arrays e Listas/.project                           |  17 +++++++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ Arrays e Listas/src/ArraysEListas/ArrayELista.java |  51 +++++++++++++++++++++
+ PO-05/PO-05 TransporteViarioClassDiagram.drawio    |  12 ++++-
+ .../PO-05 TransporteViarioClassDiagram.drawio.pdf  | Bin 0 -> 60646 bytes
+ PO-05/PO-05 TransporteViarioUseCase.drawio         |   5 +-
+ 8 files changed, 96 insertions(+), 2 deletions(-)
+
+commit 0c5717d085988c1521950ceea3d71c0bab4a0a6d
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Jan 7 18:18:26 2024 -0300
+
+    Diagrama de Classe Base
+
+ PO-05/PO-05 TransporteViarioClassDiagram.drawio | 161 ++++++++++++++++++++++++
+ 1 file changed, 161 insertions(+)
+
+commit 9a92036da3827ceb7c4392696d49bdfdf8a5a011
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Jan 7 17:51:35 2024 -0300
+
+    Casos de Uso Base PDF
+
+ PO-05/PO-05 TransporteViarioUseCase.drawio.pdf | Bin 0 -> 31369 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit be59e50db697b3fe4bd28e51a9ac97690c7dbec7
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Jan 7 14:37:17 2024 -0300
+
+    Casos de Uso Base
+
+ PO-05/PO-05 TransporteViarioUseCase.drawio | 139 +++++++++++++++++++++++++++++
+ 1 file changed, 139 insertions(+)
+
+commit 775b9d55be21b1742a2792016db8e970ce6ea835
+Author: Diogo Dorea <101480039+diogodorea@users.noreply.github.com>
+Date:   Mon Dec 25 23:30:18 2023 -0300
+
+    Repositório base.
+
+ PO-05/readme.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 692a2a3cb2b29138808420c9f55e80af823e2f86
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Dec 17 17:50:17 2023 -0300
+
+    code review
+
+ PO-04/src/Exercicio4/Veiculo.java | 32 ++++++++++++++++++++++++--------
+ 1 file changed, 24 insertions(+), 8 deletions(-)
+
+commit 70f66b75b38ddeac5b5a8f436016f50a85d4b7b8
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Dec 17 16:43:42 2023 -0300
+
+    metodo estacionar
+
+ PO-04/src/Exercicio4/Veiculo.java | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 3996cfeb8cae5a9d8eb75a4f08e9cc7e43c21470
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Dec 17 16:40:22 2023 -0300
+
+    PO-04 classe garagem
+
+ PO-04/src/Exercicio4/Veiculo.java | 158 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 158 insertions(+)
+
+commit db2b264e297cec77b155dfd741b2412c9ac257f2
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Dec 17 15:43:20 2023 -0300
+
+    Exercicio 3
+
+ PO-04/src/Exercicio2/Loja.java    |  10 ----
+ PO-04/src/Exercicio3/Veiculo.java | 123 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 123 insertions(+), 10 deletions(-)
+
+commit 38ee542cacfdbc379df3447b004e0714412161b6
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Dec 17 15:06:40 2023 -0300
+
+    PO-04 Exercicio 2
+
+ PO-04/src/Exercicio2/Pedido.java | 67 +++++++++++++++++++++++++++++++---------
+ 1 file changed, 53 insertions(+), 14 deletions(-)
+
+commit e3030c0afc2350e9fdfaef71ac66eea10eedd20c
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Sun Dec 17 11:14:56 2023 -0300
+
+    PO-04
+
+ PO-03/.classpath                                 |   6 ++
+ PO-03/.gitignore                                 |   2 +
+ PO-03/.project                                   |  17 +++
+ PO-03/CalculadoraDivisao.java                    |   3 +-
+ PO-03/teste.jar                                  | Bin 0 -> 4435 bytes
+ PO-04/.classpath                                 |  10 ++
+ PO-04/.gitignore                                 |   1 +
+ PO-04/.project                                   |  17 +++
+ PO-04/.settings/org.eclipse.core.resources.prefs |   2 +
+ PO-04/src/Exercicio1/Calculadora.java            | 130 +++++++++++++++++++++++
+ PO-04/src/Exercicio2/Loja.java                   |  10 ++
+ PO-04/src/Exercicio2/Pedido.java                 |  81 ++++++++++++++
+ 12 files changed, 278 insertions(+), 1 deletion(-)
+
+commit 6c6eb575384261cb0c78ab45fa92c545a3ab75d0
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Thu Dec 14 17:18:24 2023 -0300
+
+    exercicio de heranca
+
+ HerancaExemplos/src/Veiculos/App.java     | 32 +++++++++++++++++++++++++++++++
+ HerancaExemplos/src/Veiculos/Carro.java   | 26 +++++++++++++++++++++++++
+ HerancaExemplos/src/Veiculos/Veiculo.java | 20 +++++++++++++++++++
+ 3 files changed, 78 insertions(+)
+
+commit 67a6ddccf3ba8438893d4f4a076681149155e48a
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Thu Dec 14 15:05:20 2023 -0300
+
+    atualização das atividades
+
+ "ExercicioDeExce\303\247\303\265es/.classpath"     |  10 +++++
+ "ExercicioDeExce\303\247\303\265es/.gitignore"     |   1 +
+ "ExercicioDeExce\303\247\303\265es/.project"       |  28 +++++++++++++
+ .../.settings/org.eclipse.core.resources.prefs"    |   2 +
+ .../.settings/org.eclipse.jdt.core.prefs"          |  14 +++++++
+ "ExercicioDeExce\303\247\303\265es/src/App.java"   |  19 +++++++++
+ .../IdadeInvalidaException.java"                   |   7 ++++
+ .../src/ValidadorDeIdade/ValidadorIdade.java"      |  15 +++++++
+ Facade/.classpath                                  |  10 +++++
+ Facade/.gitignore                                  |   1 +
+ Facade/.project                                    |  17 ++++++++
+ Facade/.settings/org.eclipse.core.resources.prefs  |   2 +
+ Facade/src/Poligono/Facade.java                    |  19 +++++++++
+ Facade/src/Poligono/Poligono.java                  |  31 +++++++++++++++
+ Facade/src/Poligono/Ponto.java                     |   9 +++++
+ Facade2/.classpath                                 |  10 +++++
+ Facade2/.gitignore                                 |   1 +
+ Facade2/.project                                   |  17 ++++++++
+ Facade2/.settings/org.eclipse.core.resources.prefs |   2 +
+ Facade2/src/Poligono2/Facade.java                  |  20 ++++++++++
+ Facade2/src/Poligono2/Poligono.java                |  28 +++++++++++++
+ Facade2/src/Poligono2/Ponto.java                   |  23 +++++++++++
+ HerancaExemplos/.classpath                         |  10 +++++
+ HerancaExemplos/.gitignore                         |   1 +
+ HerancaExemplos/.project                           |  17 ++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ IMG_20231211_085501248.jpg                         | Bin 0 -> 2443980 bytes
+ PadraoFacade/.classpath                            |   9 +++++
+ PadraoFacade/.gitignore                            |   1 +
+ PadraoFacade/.project                              |  17 ++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ PadraoFacade/Ponto.java                            |   4 ++
+ Poligonos.zip                                      | Bin 0 -> 6717 bytes
+ Poligonos/.classpath                               |   6 +++
+ Poligonos/.project                                 |  17 ++++++++
+ Poligonos/Poligonos/.classpath                     |  10 +++++
+ Poligonos/Poligonos/.project                       |  17 ++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ .../Poligonos/.settings/org.eclipse.jdt.core.prefs |  14 +++++++
+ Poligonos/Poligonos/bin/.gitignore                 |   2 +
+ Poligonos/Poligonos/src/module-info.java           |   8 ++++
+ Poligonos/Poligonos/src/poligonos/Facade.java      |  23 +++++++++++
+ Poligonos/Poligonos/src/poligonos/Poligono.java    |  35 ++++++++++++++++
+ Poligonos/Poligonos/src/poligonos/Ponto.java       |  44 +++++++++++++++++++++
+ PoligonosRuim.zip                                  | Bin 0 -> 6492 bytes
+ PoligonosRuim/.classpath                           |   6 +++
+ PoligonosRuim/.project                             |  17 ++++++++
+ PoligonosRuim/PoligonosRuim/.classpath             |  10 +++++
+ PoligonosRuim/PoligonosRuim/.project               |  17 ++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ .../.settings/org.eclipse.jdt.core.prefs           |  14 +++++++
+ PoligonosRuim/PoligonosRuim/bin/.gitignore         |   2 +
+ PoligonosRuim/PoligonosRuim/src/module-info.java   |   8 ++++
+ .../PoligonosRuim/src/poligonos/Facade.java        |  25 ++++++++++++
+ .../PoligonosRuim/src/poligonos/Poligono.java      |  37 +++++++++++++++++
+ .../PoligonosRuim/src/poligonos/Ponto.java         |  23 +++++++++++
+ SobrecargaDeMetodos/.classpath                     |  10 +++++
+ SobrecargaDeMetodos/.gitignore                     |   1 +
+ SobrecargaDeMetodos/.project                       |  28 +++++++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ SobrecargaDeMetodos/src/Sobrecarga/App.java        |  20 ++++++++++
+ SobrecargaDeMetodos/src/Sobrecarga/Usuario.java    |  24 +++++++++++
+ 62 files changed, 773 insertions(+)
+
+commit f708269505cbd10b1f1005d77aa6359e3148c30e
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:32:52 2023 -0300
+
+    review
+
+ PO-03/CalculadoraDivisao.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 885884d8243efca3c8916dd6ef4914c44e6bddbc
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:19:19 2023 -0300
+
+    code review
+
+ PO-03/CalculadoraDivisao.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 01cffd432720ceed857056bf13d44a45c274cebc
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:18:03 2023 -0300
+
+    float
+
+ PO-03/CalculadoraDivisao.java | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+commit b7adab9f89def2996992aa822eb01d1544a872d5
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:17:26 2023 -0300
+
+    inteiro
+
+ PO-03/CalculadoraDivisao.java | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit fd0d2e1968fd142af4dcf67a3badad4554040605
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:16:33 2023 -0300
+
+    Calculadora
+
+ PO-03/CalculadoraDivisao.java | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+commit 8a6805b7300fbac209524a2255b6fac3295fa1b6
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:03:08 2023 -0300
+
+    Questionario5
+
+ PO-03/Questionario.md | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+commit b949305ae0cb1c03c55d6e4f03640291920defab
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:02:38 2023 -0300
+
+    Questionario4
+
+ PO-03/Questionario.md | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+commit 48eaffd65db59a9b271eff8ca9762ec7166e651c
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:02:05 2023 -0300
+
+    Questionario3
+
+ PO-03/Questionario.md | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit f370c3ba696c9923c4ef39d7977e019c43d6ff8e
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:01:41 2023 -0300
+
+    Questionario 2
+
+ PO-03/Questionario.md | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+commit b5699f7f6d61af25428623fbc2776e0911040e07
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 01:00:42 2023 -0300
+
+    Questionario
+
+ PO-03/Questionario.md | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 5e671ab9f2082e339084272d85e1afe72f221d74
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Mon Dec 4 00:03:29 2023 -0300
+
+    aberto no vscode
+
+ AulaTerca14/.project                   | 11 +++++++++
+ AulaTerca21/.project                   | 11 +++++++++
+ Conjugador/.project                    | 11 +++++++++
+ LIstaDeNumeros/.project                | 11 +++++++++
+ PO-01/.project                         | 11 +++++++++
+ PO-02/.project                         | 11 +++++++++
+ RedeSocial/.project                    | 11 +++++++++
+ RedeSocial/src/RedeSocial/Usuario.java | 45 ++++++----------------------------
+ Tabuada/.project                       | 11 +++++++++
+ 9 files changed, 96 insertions(+), 37 deletions(-)
+
+commit cf9e2d9068f5867be202f28861b5604a74722256
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Thu Nov 23 01:44:53 2023 -0300
+
+    Metodo maior valor
+
+ PO-02/src/ManipulaArray/ManipulaArray.java | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit 922b4cc9b9a072c57f8bef29d241f7b41dc22ff5
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Thu Nov 23 01:42:09 2023 -0300
+
+    Metodo menor valor
+
+ PO-02/src/ManipulaArray/ManipulaArray.java | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+commit f3d024483fb718b4a1e3185fcee44d9a1b35bf51
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Thu Nov 23 01:23:51 2023 -0300
+
+    Array int Aleatorio e Inseridos
+
+ PO-02/src/ManipulaArray/ManipulaArray.java | 45 ++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+commit 2ea66c199c1397a38f563160e8b527b087398e5f
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 17:49:43 2023 -0300
+
+    Aula dia 21 exercicio 5
+
+ AulaTerca21/src/exercicio5/TempConvert.java | 51 +++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+
+commit 9ea5c4181ee41c0cf7f5d04e2626210073849617
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 17:11:56 2023 -0300
+
+    exercicio 4 aula dia 21
+
+ AulaTerca21/src/exercicio4/Exercicio4.java | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+commit 5c0d8ed6b7e02eddab03ade6d2aa709eff0dd695
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 17:00:36 2023 -0300
+
+    exercicios 1, 2 e 3 auladia21
+
+ AulaTerca21/.classpath                             | 10 +++++++
+ AulaTerca21/.gitignore                             |  1 +
+ AulaTerca21/.project                               | 17 +++++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |  2 ++
+ AulaTerca21/src/exercicio1/somaInteiro.java        | 11 +++++++
+ AulaTerca21/src/exercicio10/exercicio10.java       | 28 +++++++++++++++++
+ AulaTerca21/src/exercicio2/exercicio2.java         | 35 ++++++++++++++++++++++
+ AulaTerca21/src/exercicio3/exercicio3.java         | 22 ++++++++++++++
+ AulaTerca21/src/exercicios/menorValor.java         | 19 ++++++++++++
+ 9 files changed, 145 insertions(+)
+
+commit acc57d2fc932c3ddbffb82fd9983c102439e4153
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 11:17:51 2023 -0300
+
+    PO-02 JogoAdvinhação
+
+ PO-02/.classpath                             |  6 +++++
+ PO-02/src/JogoAdvinhacao/JogoAdvinhacao.java | 34 ++++++++++++++++++++++++++++
+ 2 files changed, 40 insertions(+)
+
+commit c93b78cd43575320825041485cde6ea6c5370ba2
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 10:31:35 2023 -0300
+
+    PO-02 conversorMoedas
+
+ PO-02/.gitignore                               |  1 +
+ PO-02/.project                                 | 17 +++++++++++++++++
+ PO-02/src/ConversorMoedas/ConversorMoedas.java | 21 +++++++++++++++++++++
+ 3 files changed, 39 insertions(+)
+
+commit 77fcbd18876edae35ea6be2248ee3a11e0cbdc59
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 10:05:31 2023 -0300
+
+    Ajuste P001 fechamento do scanner em calculadora Java
+
+ PO-01/src/CalculadoraSimples/Calculadora.java | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit 015c3c3bcdc4e60020c3a8d4c40812ff70c56973
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 21 09:53:48 2023 -0300
+
+    Ajuste P001 remoção de variável nao utilizada
+
+ PO-01/src/ConversorTemperatura/ConversorTemperatura.java | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+commit 4ca68c1e276ced86533425eb8452f7134b0b847e
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Wed Nov 15 03:26:56 2023 -0300
+
+    PO-01 Conversor Temp. e ultimas questoes
+
+ PO-01/questoes.md                                  | 141 ++++++++++++++++++++-
+ .../ConversorTemperatura/ConversorTemperatura.java |  53 ++++++++
+ 2 files changed, 193 insertions(+), 1 deletion(-)
+
+commit 2a4f0c645561a0f015c7d2c9ce14befb2fbb6d8f
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Wed Nov 15 02:39:28 2023 -0300
+
+    PO-01 CAlculadora e primeiras questoes
+
+ PO-01/.classpath                                 | 10 +++++
+ PO-01/.gitignore                                 |  1 +
+ PO-01/.project                                   | 17 ++++++++
+ PO-01/.settings/org.eclipse.core.resources.prefs |  2 +
+ "PO-01/Quest\303\265es.md" => PO-01/questoes.md  |  0
+ PO-01/src/CalculadoraSimples/Calculadora.java    | 50 ++++++++++++++++++++++++
+ 6 files changed, 80 insertions(+)
+
+commit 41a91367a4c19f565f870ae542075bfc5c2160dd
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Wed Nov 15 02:17:25 2023 -0300
+
+    Exercicio aula dia 14-11 Lista de Numeros
+
+ LIstaDeNumeros/.classpath                          | 10 +++++
+ LIstaDeNumeros/.gitignore                          |  1 +
+ LIstaDeNumeros/.project                            | 17 ++++++++
+ .../.settings/org.eclipse.core.resources.prefs     |  2 +
+ .../src/ListaDeNumeros/ListaDeNumeros.java         | 51 ++++++++++++++++++++++
+ 5 files changed, 81 insertions(+)
+
+commit b472c976dcdf4874211f36148126aea4af8fe295
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Wed Nov 15 02:01:48 2023 -0300
+
+    Exercicio aula dia 14-11 Tabuada
+
+ Tabuada/.classpath                                 | 10 +++++++++
+ Tabuada/.gitignore                                 |  1 +
+ Tabuada/.project                                   | 17 +++++++++++++++
+ Tabuada/.settings/org.eclipse.core.resources.prefs |  2 ++
+ Tabuada/src/Tabuada/Tabuada.java                   | 24 ++++++++++++++++++++++
+ 5 files changed, 54 insertions(+)
+
+commit 2da966d5548ce66fbf03ba20419ff86ad4f591e8
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Wed Nov 15 01:32:23 2023 -0300
+
+    Implementação arraylist de usuarios e mostrar postagens
+
+ RedeSocial/src/RedeSocial/Usuario.java | 68 +++++++++++++++++++++++++++++-----
+ 1 file changed, 58 insertions(+), 10 deletions(-)
+
+commit ce355f0926ead0ab085ed49a3a9777193bea0055
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 14 23:50:55 2023 -0300
+
+    Remoção de projeto Carro não utilizado
+
+ Carro/.classpath                                 | 10 ----------
+ Carro/.gitignore                                 |  1 -
+ Carro/.project                                   | 17 -----------------
+ Carro/.settings/org.eclipse.core.resources.prefs |  2 --
+ Carro/src/carro/Carro.java                       |  5 -----
+ 5 files changed, 35 deletions(-)
+
+commit 069eea955bffe57c6ce568a111d341946ac640b8
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 14 23:47:42 2023 -0300
+
+    Atualização da classe Conjugador exemplo de aula
+
+ Conjugador/src/Conjugador/Verbo.java      | 58 +++++++++++++++++++++++++++++++
+ Conjugador/src/Conjugador/helloworld.java | 11 ------
+ 2 files changed, 58 insertions(+), 11 deletions(-)
+
+commit efda0aba9481ab191882e265a3b51439b1039280
+Author: Diogo Dorea <101480039+diogodorea@users.noreply.github.com>
+Date:   Tue Nov 14 23:41:56 2023 -0300
+
+    Delete ReseSocial directory
+
+ ReseSocial/.classpath                              | 10 ---
+ ReseSocial/.gitignore                              |  1 -
+ ReseSocial/.project                                | 17 -----
+ .../.settings/org.eclipse.core.resources.prefs     |  2 -
+ ReseSocial/src/cliente/Usuario.java                | 86 ----------------------
+ 5 files changed, 116 deletions(-)
+
+commit c15d90051d588a4bf1da924ac14652d66f9fb29a
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 14 23:41:12 2023 -0300
+
+    Ajuste da pasta do projeto rede social
+
+ RedeSocial/.classpath                              | 10 +++
+ RedeSocial/.gitignore                              |  1 +
+ RedeSocial/.project                                | 17 +++++
+ .../.settings/org.eclipse.core.resources.prefs     |  2 +
+ RedeSocial/src/RedeSocial/Usuario.java             | 86 ++++++++++++++++++++++
+ 5 files changed, 116 insertions(+)
+
+commit bb12aa82aaab5f4c1463497c9b90f7b289330f69
+Author: Diogo Dorea <diogodorea@gmail.com>
+Date:   Tue Nov 14 17:58:52 2023 -0300
+
+    Arquivos
+
+ .gitignore                                         |   1 +
+ AulaTerca14/.classpath                             |  12 +
+ AulaTerca14/.gitignore                             |   1 +
+ AulaTerca14/.project                               |  17 ++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ AulaTerca14/.settings/org.eclipse.jdt.core.prefs   |  15 ++
+ AulaTerca14/src/Cliente/cliente.java               |  46 ++++
+ Carro/.classpath                                   |  10 +
+ Carro/.gitignore                                   |   1 +
+ Carro/.project                                     |  17 ++
+ Carro/.settings/org.eclipse.core.resources.prefs   |   2 +
+ Carro/src/carro/Carro.java                         |   5 +
+ Conjugador/.classpath                              |  10 +
+ Conjugador/.gitignore                              |   1 +
+ Conjugador/.project                                |  17 ++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ Conjugador/src/Conjugador/helloworld.java          |  11 +
+ "PO-01/Quest\303\265es.md"                         | 244 +++++++++++++++++++++
+ ReseSocial/.classpath                              |  10 +
+ ReseSocial/.gitignore                              |   1 +
+ ReseSocial/.project                                |  17 ++
+ .../.settings/org.eclipse.core.resources.prefs     |   2 +
+ ReseSocial/src/cliente/Usuario.java                |  86 ++++++++
+ 23 files changed, 530 insertions(+)
+
+commit 5060a5cf3c2784f15586b144f71473ec5075c8ac
+Author: Diogo Dorea <101480039+diogodorea@users.noreply.github.com>
+Date:   Sat Nov 11 11:17:19 2023 -0300
+
+    Initial commit
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
