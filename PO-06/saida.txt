@@ -1,0 +1,1 @@
+Mensagem para ser gravada e persistir no arquivo saida.txt
