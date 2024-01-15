@@ -27,5 +27,31 @@ public class Process {
 		}
 		
 	}
+	
+public static void process(String arquivo1, String arquivo2, String senha) {
+		
+		try {
+			FileInputStream file1 = new FileInputStream(arquivo1);
+			FileOutputStream file2 = new FileOutputStream(arquivo2);
+			boolean eof = false; int count = 0;
+			while (!eof) {
+				int input = file1.read();
+				//ToDo Realizar o XOR de input antes de escrever no arquivo 2
+				int xor = 255;
+				int inputxor = input ^ xor;
+				if (input != -1) {
+					
+					file2.write(inputxor);
+					count++;
+				} else eof = true;
+			}
+			file1.close();
+			file2.close();
+			System.out.println("Copia concluida\nBytes lidos: " + count);
+		} catch (IOException e) {
+			System.out.println("Error -- " + e.toString());
+		}
+		
+	}
 
 }
