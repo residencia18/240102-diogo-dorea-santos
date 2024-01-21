@@ -48,11 +48,12 @@ public class Trecho {
 		this.duracaoParada = duracaoParada;
 		this.embarques = embarques;
 	}
-	public Duration calculaDuracao (PontoParada origem, PontoParada destino, Duration duracaoParada) {
+	public Duration calculaDuracao () {
 		//calcula diferenca entre os localtime de origem e destino
-		//atribui a variavel duracao e retorna o valor somado ao tempo medio de parada que foi recebido
+		//atribui a variavel duracao e retorna o valor somado ao tempo medio de parada
 		Duration duracao = Duration.between(origem.getHorario(), destino.getHorario());
-		return duracao.plus(duracaoParada);		
+		duracaoTrecho = duracao.plus(duracaoParada);
+		return duracaoTrecho;		
 	}
 	
 	public void registraEmbarque(Cliente cliente) {
