@@ -7,6 +7,7 @@ public class PontoParada {
 	private String cep, gps;
 	private int numero;
 	private LocalTime horario;
+	
 	public String getCep() {
 		return cep;
 	}
