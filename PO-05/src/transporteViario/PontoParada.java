@@ -4,8 +4,7 @@ import java.time.LocalTime;
 
 public class PontoParada {
 	
-	private String cep, gps;
-	private int numero;
+	private String cep, gps, numero;
 	private LocalTime horario;
 	
 	public String getCep() {
@@ -20,10 +19,10 @@ public class PontoParada {
 	public void setGps(String gps) {
 		this.gps = gps;
 	}
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	public LocalTime getHorario() {
@@ -32,10 +31,14 @@ public class PontoParada {
 	public void setHorario(LocalTime horario) {
 		this.horario = horario;
 	}
-	public PontoParada(String cep, String gps, int numero, LocalTime horario) {
+	
+	
+	@Override
+	public String toString() {
+		return "PontoParada [numero= " + numero + ", horario= " + horario + "]";
+	}
+	public PontoParada(String numero, LocalTime horario) {
 		
-		this.cep = cep;
-		this.gps = gps;
 		this.numero = numero;
 		this.horario = horario;
 	}

@@ -1,11 +1,9 @@
 package transporteViario;
 
-import java.util.Date;
-
 public class Veiculo {
 	
-	private String placa, chassi, fabricante;
-	private int renavam, ano;
+	private String placa, chassi, fabricante, renavam;
+	private int ano;
 	public String getPlaca() {
 		return placa;
 	}
@@ -24,10 +22,10 @@ public class Veiculo {
 	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
 	}
-	public int getRenavam() {
+	public String getRenavam() {
 		return renavam;
 	}
-	public void setRenavam(int renavam) {
+	public void setRenavam(String renavam) {
 		this.renavam = renavam;
 	}
 	public int getAno() {
@@ -36,7 +34,7 @@ public class Veiculo {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
-	public Veiculo(String placa, String chassi, String fabricante, int renavam, int ano) {
+	public Veiculo(String placa, String chassi, String fabricante, String renavam, int ano) {
 		
 		this.placa = placa;
 		this.chassi = chassi;

@@ -2,17 +2,24 @@ package transporteViario;
 
 public class Cobrador extends Pessoa{
 	
-	private int ctps;
+	private String ctps;
 
-	public int getCtps() {
+	public String getCtps() {
 		return ctps;
 	}
 
-	public void setCtps(int ctps) {
+	public void setCtps(String ctps) {
 		this.ctps = ctps;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Cobrador [ctps= " + ctps + ", Nome= " + getNome() + ", CPF= " + getCpf() + "]";
+	}
 
-	public Cobrador(String nome, int cpf, int ctps) {
+	public Cobrador(String nome, String cpf, String ctps) {
 		super(nome, cpf);
 		this.ctps = ctps;
 	}

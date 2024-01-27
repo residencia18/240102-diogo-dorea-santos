@@ -2,25 +2,31 @@ package transporteViario;
 
 public class Motorista extends Pessoa{
 	
-	private int cnh, ctps;
+	private String cnh, ctps;
 
-	public int getCnh() {
+	public String getCnh() {
 		return cnh;
 	}
 
-	public void setCnh(int cnh) {
+	public void setCnh(String cnh) {
 		this.cnh = cnh;
 	}
 
-	public int getCtps() {
+	public String getCtps() {
 		return ctps;
 	}
 
-	public void setCtps(int ctps) {
+	public void setCtps(String ctps) {
 		this.ctps = ctps;
 	}
+	
 
-	public Motorista(String nome, int cpf, int cnh, int ctps) {
+	@Override
+	public String toString() {
+		return "Motorista [cnh=" + cnh + ", ctps=" + ctps + ", Nome= " + getNome() + ", CPF= " + getCpf() + "]";
+	}
+
+	public Motorista(String nome, String cpf, String cnh, String ctps) {
 		super(nome, cpf);
 		this.cnh = cnh;
 		this.ctps = ctps;

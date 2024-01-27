@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Trecho {
 	
 	private PontoParada origem, destino;
-	private Duration duracaoTrecho, duracaoParada;
+	private Duration duracaoTrecho = Duration.ZERO, duracaoParada = Duration.ZERO;
 	private ArrayList<Cliente> embarques;
 	
 	public PontoParada getOrigem() {
@@ -30,22 +30,18 @@ public class Trecho {
 	public Duration getDuracaoParada() {
 		return duracaoParada;
 	}
-	public void setDuracaoParada(Duration duracaoParada) {
-		this.duracaoParada = duracaoParada;
-	}
 	public ArrayList<Cliente> getEmbarques() {
 		return embarques;
 	}
 	public void setEmbarques(ArrayList<Cliente> embarques) {
 		this.embarques = embarques;
 	}
-	public Trecho(PontoParada origem, PontoParada destino, Duration duracaoTrecho, Duration duracaoParada,
-			ArrayList<Cliente> embarques) {
+	public Trecho(PontoParada origem, PontoParada destino, ArrayList<Cliente> embarques, int _duracaoParada) {
 		
 		this.origem = origem;
 		this.destino = destino;
-		this.duracaoTrecho = duracaoTrecho;
-		this.duracaoParada = duracaoParada;
+		this.duracaoParada = Duration.ofMinutes(_duracaoParada);
+		this.duracaoTrecho = calculaDuracao();
 		this.embarques = embarques;
 	}
 	public Duration calculaDuracao () {

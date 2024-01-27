@@ -2,14 +2,19 @@ package transporteViario;
 
 public class Card {
 	
-	private int CardNumber;
+	private int cardNumber;
 
 	public int getCardNumber() {
-		return CardNumber;
+		return cardNumber;
 	}
 
-	public void setCardNumber(int cardNumber) {
-		CardNumber = cardNumber;
+	public Card(int cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Card [cardNumber= " + cardNumber + "]";
 	}
 	
 	

@@ -16,7 +16,14 @@ public class Onibus extends Veiculo{
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public Onibus(String placa, String chassi, String fabricante, int renavam, int ano, String modelo, int numero) {
+	
+	@Override
+	public String toString() {
+		return "Onibus [modelo=" + modelo + ", numero=" + numero + ", Placa=" + getPlaca() + ", Chassi="
+				+ getChassi() + ", Fabricante=" + getFabricante() + ", Renavam=" + getRenavam()
+				+ ", Ano=" + getAno() + "]";
+	}
+	public Onibus(String placa, String renavam, int ano, String chassi, String fabricante, int numero, String modelo) {
 		super(placa, chassi, fabricante, renavam, ano);
 		this.modelo = modelo;
 		this.numero = numero;

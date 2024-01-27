@@ -34,12 +34,12 @@ public class Trajeto {
 	public void setDuracaoTrajeto(Duration duracaoTrajeto) {
 		this.duracaoTrajeto = duracaoTrajeto;
 	}
-	public Trajeto(ArrayList<Trecho> trechos, LocalTime inicio, LocalTime checkPoint, Duration duracaoTrajeto) {
+	public Trajeto(ArrayList<Trecho> trechos, LocalTime inicio, LocalTime checkPoint) {
 		
 		this.trechos = trechos;
 		this.inicio = inicio;
 		this.checkPoint = checkPoint;
-		this.duracaoTrajeto = duracaoTrajeto;
+		this.duracaoTrajeto = calculaDuracao();
 	}
 	
 	public Duration calculaDuracao () {
@@ -50,8 +50,7 @@ public class Trajeto {
 			duracaoTrajeto = duracaoTrajeto.plus(trecho.getDuracaoTrecho());
 		}
 		
-		return duracaoTrajeto;
-		
+		return duracaoTrajeto;		
 	}
 	
 	public void registraCheckPoint () {
@@ -62,13 +61,4 @@ public class Trajeto {
 		this.setCheckPoint(trechos.get((trechos.size()/2)).getOrigem().getHorario());
 		
 	}
-	
-	public void registraInicio(LocalTime inicio) {
-		
-		this.inicio = inicio;
-		
-	}
-	
-	
-
 }

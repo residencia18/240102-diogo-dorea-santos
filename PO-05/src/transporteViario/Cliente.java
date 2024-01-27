@@ -12,10 +12,19 @@ public class Cliente extends Pessoa{
 		this.cartaoPessoal = cartaoPessoal;
 	}
 
-	public Cliente(String nome, int cpf, Card cartaoPessoal) {
+	public Cliente(String nome, String cpf, Card cartaoPessoal) {
 		super(nome, cpf);
 		this.cartaoPessoal = cartaoPessoal;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [cartaoPessoal =" + cartaoPessoal.toString() + ", Nome= " + getNome() + ", CPF= " + getCpf() + "]";
+	}
+	
+	
+	
+	
 	
 	
 	
