@@ -32,6 +32,10 @@ public class Motorista extends Pessoa{
 		this.ctps = ctps;
 	}
 	
+	public Motorista() {
+		super();
+	}
+	
 	
 	
 	

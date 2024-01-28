@@ -5,10 +5,17 @@ import java.util.ArrayList;
 
 public class Trecho {
 	
+	private String codTrecho;
 	private PontoParada origem, destino;
 	private Duration duracaoTrecho = Duration.ZERO, duracaoParada = Duration.ZERO;
 	private ArrayList<Cliente> embarques;
 	
+	public String getCodTrecho() {
+		return codTrecho;
+	}
+	public void setCodTrecho(String codTrecho) {
+		this.codTrecho = codTrecho;
+	}
 	public PontoParada getOrigem() {
 		return origem;
 	}
@@ -36,13 +43,16 @@ public class Trecho {
 	public void setEmbarques(ArrayList<Cliente> embarques) {
 		this.embarques = embarques;
 	}
-	public Trecho(PontoParada origem, PontoParada destino, ArrayList<Cliente> embarques, int _duracaoParada) {
+	public Trecho(String codTrecho, PontoParada origem, PontoParada destino, Duration _duracaoParada) {
 		
+		this.codTrecho = codTrecho;
 		this.origem = origem;
 		this.destino = destino;
-		this.duracaoParada = Duration.ofMinutes(_duracaoParada);
+		this.duracaoParada = _duracaoParada;
 		this.duracaoTrecho = calculaDuracao();
-		this.embarques = embarques;
+	}
+	public Trecho() {
+		
 	}
 	public Duration calculaDuracao () {
 		//calcula diferenca entre os localtime de origem e destino
@@ -57,5 +67,12 @@ public class Trecho {
 		embarques.add(cliente);
 		
 	}
+	@Override
+	public String toString() {
+		return "Trecho [origem=" + origem + ", destino=" + destino + ", duracaoTrecho =" + duracaoTrecho.toMinutes()
+				+ " minutos , duracaoParada=" + duracaoParada.toMinutes() + " minutos, embarques=" + embarques + "]";
+	}
+	
+	
 
 }

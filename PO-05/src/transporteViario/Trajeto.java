@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Trajeto {
 	
+	private String codTrajeto;
 	private ArrayList<Trecho> trechos;
 	private LocalTime inicio, checkPoint;
 	private Duration duracaoTrajeto;
@@ -34,12 +35,17 @@ public class Trajeto {
 	public void setDuracaoTrajeto(Duration duracaoTrajeto) {
 		this.duracaoTrajeto = duracaoTrajeto;
 	}
-	public Trajeto(ArrayList<Trecho> trechos, LocalTime inicio, LocalTime checkPoint) {
+	public Trajeto(String codTrajeto, ArrayList<Trecho> trechos) {
 		
+		this.codTrajeto = codTrajeto;
 		this.trechos = trechos;
-		this.inicio = inicio;
-		this.checkPoint = checkPoint;
+		this.inicio = trechos.get(0).getOrigem().getHorario();
+		this.checkPoint = registraCheckPoint();
 		this.duracaoTrajeto = calculaDuracao();
+	}
+	
+	public Trajeto() {
+		
 	}
 	
 	public Duration calculaDuracao () {
@@ -53,12 +59,20 @@ public class Trajeto {
 		return duracaoTrajeto;		
 	}
 	
-	public void registraCheckPoint () {
+	public LocalTime registraCheckPoint() {
 		
 		//Acessa o indice mediano da lista de termos
 		//acesso o horario do pontoParada origem daquele trecho
 		//checkPoint = trechos.get((trechos.size()/2)).getOrigem().getHorario();
-		this.setCheckPoint(trechos.get((trechos.size()/2)).getOrigem().getHorario());
+		LocalTime checkPoint = trechos.get((trechos.size()/2)).getOrigem().getHorario();
+		return checkPoint;
 		
 	}
+	@Override
+	public String toString() {
+		return "Trajeto [codTrajeto= " + codTrajeto + ", inicio= " + inicio.toString() + ", checkPoint= "
+				+ checkPoint.toString() + ", duracaoTrajeto= " + duracaoTrajeto.toHours() + " horas]";
+	}
+	
+	
 }
