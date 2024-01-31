@@ -35,6 +35,42 @@ public class FaturaController {
 		}
 	}
 	
+	
+	public static void realizarLeitura(Imovel imovel, int leitura) throws Exception {
+		System.out.println("\n======================== Realizar leitura do imóvel ========================");		
+		Imovel imovelSelecionado = imovel;
+		
+		try {
+			if (imovelSelecionado != null) {			
+				//System.out.print("\nValor da leitura: ");
+				//int leitura = Util.stringToInt(entrada.nextLine());
+				
+				Fatura fatura = FaturaService.gerarFatura(imovelSelecionado, leitura);
+				
+				System.out.println("\nImprimindo fatura...\n");
+				imprimeFatura(fatura);
+			}
+			else {
+				System.out.println("\nNão existem dados para serem exibidos.");
+			}
+		}catch (Exception e) {
+			
+			System.out.println("\nErro ao gerar fatura: " + e.getMessage());
+		}
+		
+		/*
+		try {
+			Fatura fatura = FaturaService.gerarFatura(imovelSelecionado, leitura);
+			
+			System.out.println("\nImprimindo fatura...\n");
+			imprimeFatura(fatura);
+		}
+		catch (Exception e) {
+			System.out.println("\nErro ao gerar fatura: " + e.getMessage());
+		}
+		*/
+	}
+	
 	public static void listarFaturas(boolean isQuitada) {
 		String titulo = isQuitada ? "quitadas" : "";
 		System.out.println("\n======================== Listar faturas " + titulo +" ========================\n");

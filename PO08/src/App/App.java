@@ -8,7 +8,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		//Apenas para testes
-		//Mock.gerarDadosAleatorios();
+		Mock.gerarDadosAleatorios();
 		
 		Menu.menuPrincipal();
 
