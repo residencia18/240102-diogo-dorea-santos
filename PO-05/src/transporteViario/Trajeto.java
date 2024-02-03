@@ -26,6 +26,12 @@ public class Trajeto {
 	public LocalTime getCheckPoint() {
 		return checkPoint;
 	}
+	public String getCodTrajeto() {
+		return codTrajeto;
+	}
+	public void setCodTrajeto(String codTrajeto) {
+		this.codTrajeto = codTrajeto;
+	}
 	public void setCheckPoint(LocalTime checkPoint) {
 		this.checkPoint = checkPoint;
 	}

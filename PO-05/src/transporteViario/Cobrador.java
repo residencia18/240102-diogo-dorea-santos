@@ -24,6 +24,8 @@ public class Cobrador extends Pessoa{
 		this.ctps = ctps;
 	}
 	
-	
+	public Cobrador (){
+		
+	}
 
 }

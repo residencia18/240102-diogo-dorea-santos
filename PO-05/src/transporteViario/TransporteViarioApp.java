@@ -119,7 +119,7 @@ public class TransporteViarioApp {
         veiculos.add(veiculo);
         System.out.println("Veículo cadastrado com sucesso!");
         System.out.println(veiculo.toString());
-        scanner.close();
+        //scanner.close();
     }
 
     private static void cadastrarMotorista(ArrayList<Motorista> motoristas) {
@@ -143,7 +143,7 @@ public class TransporteViarioApp {
 		motoristas.add(motorista);
 		System.out.println("Motorista cadastrado com sucesso!");
 		System.out.println(motorista.toString());
-		scanner.close();
+		//scanner.close();
     }
 
     private static void cadastrarCobrador(ArrayList<Cobrador> cobradores) {
@@ -164,7 +164,7 @@ public class TransporteViarioApp {
 		cobradores.add(cobrador);
 		System.out.println("Cobrador cadastrado com sucesso!");
 		System.out.println(cobrador.toString());
-		scanner.close();
+		//scanner.close();
     }
 
     private static void cadastrarPassageiro(ArrayList<Cliente> passageiros) {
@@ -187,7 +187,7 @@ public class TransporteViarioApp {
 		passageiros.add(passageiro);
 		System.out.println("Passageiro cadastrado com sucesso!");
 		System.out.println(passageiro.toString());
-		scanner.close();
+		//scanner.close();
     }
 
     private static void cadastrarPontoDeParada(ArrayList<PontoParada> pontosDeParada) {
@@ -212,7 +212,8 @@ public class TransporteViarioApp {
 		
 		pontosDeParada.add(pontoParada);
 		System.out.println("Ponto de parada cadastrado com sucesso!");
-		System.out.println(pontoParada.toString());	
+		System.out.println(pontoParada.toString());
+		//scanner.close();
     }
 
     private static void cadastrarTrecho(ArrayList<Trecho> trechos, ArrayList<PontoParada> pontosDeParada) {
@@ -241,7 +242,8 @@ public class TransporteViarioApp {
     	Trecho trecho = new Trecho(codTrecho, pontoParadaOrigem, pontoParadaDestino, duracaoParada);
     	trechos.add(trecho);
 		System.out.println("Trecho cadastrado com sucesso!");
-		System.out.println(trecho.toString());   	
+		System.out.println(trecho.toString());
+		//scanner.close();
     }
     
     private static void cadastrarTrajeto(ArrayList<Trajeto> trajetos, ArrayList<Trecho> trechos) {
@@ -286,11 +288,52 @@ public class TransporteViarioApp {
     
     private static void cadastrarJornada(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos, ArrayList<Motorista> motoristas,
                                          ArrayList<Cobrador> cobradores, ArrayList<Veiculo> veiculos) {
-    	System.out.println("Informe o CPF do motorista: ");
-    	Scanner scanner = new Scanner(System.in);
-    	String cpf = scanner.nextLine();
-    	Motorista motorista = new Motorista();
-        
+    	
+		System.out.println("\n### Cadastro de Jornada ###");
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Informe o codigo da jornada: ");
+		String codJornada = scanner.nextLine();
+		System.out.print("Para montar uma jornada, informe o codigo de pelo menos um trajeto: ");
+		String codTrajeto = scanner.nextLine();
+		Trajeto trajeto = new Trajeto();
+		trajeto = localizaTrajeto(codTrajeto, trajetos);
+		ArrayList<Trajeto> trajetosAux = new ArrayList<Trajeto>();
+		System.out.println("Quantas vezes este trajeto pode ser repetido?");
+		int repete = scanner.nextInt();
+		for (int i = 0; i < repete; i++) {
+			trajetosAux.add(trajeto);			
+		}
+		System.out.println("Qual cpf do motorista que deseja atribuir a esta jornada?");
+		String cpfMotorista = scanner.nextLine();
+		Motorista motorista = new Motorista();
+		motorista = localizaMotorista(cpfMotorista, motoristas);
+		System.out.println("Deseja atribuir um cobrador para esta jornada? Sim ou Nao");
+		String resposta = scanner.nextLine();
+		Cobrador cobrador = new Cobrador();
+		if (resposta.equals("Sim")||resposta.equals("S")||resposta.equals("s")) {
+			System.out.println("Qual cpf do cobrador que deseja atribuir a esta jornada?");
+			String cpfCobrador = scanner.nextLine();
+			cobrador = localizaCobrador(cpfCobrador, cobradores);
+		}
+		System.out.println("Qual placa do veiculo que deseja atribuir a esta jornada?");
+		String placaVeiculo = scanner.nextLine();
+		Veiculo veiculo = new Veiculo();
+		veiculo = localizaVeiculo(placaVeiculo, veiculos);
+		if (resposta.equals("Sim")||resposta.equals("S")||resposta.equals("s")) {
+			Jornada jornada = new Jornada(codJornada, trajetosAux, motorista, cobrador, veiculo);
+			jornadas.add(jornada);
+			System.out.println("Jornada criada com sucesso!");
+			System.out.println(jornada.toString());	
+		}
+		else {
+			
+			Jornada jornada = new Jornada(codJornada, trajetosAux, motorista, null, veiculo);
+			jornadas.add(jornada);
+			System.out.println("Jornada criada com sucesso!");
+			System.out.println(jornada.toString());
+		}   
     }
 
     private static void registrarInicioDeTrajeto(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos) {
@@ -330,6 +373,17 @@ public class TransporteViarioApp {
 	    
     }
     
+    public static Trajeto localizaTrajeto(String codTrajeto, ArrayList<Trajeto> trajetos) {
+	    
+		for (Trajeto trajeto : trajetos) {
+			if (trajeto.getCodTrajeto().equals(codTrajeto)) {
+				return trajeto;
+			}
+		}
+		System.out.println("Trajeto não encontrado!");
+		return null;
+    }
+    
     public static Cobrador localizaCobrador(String ctpsBusca, ArrayList<Cobrador> cobradores) {
 		for (Cobrador cobrador : cobradores) {
 			if (cobrador.getCtps().equals(ctpsBusca)) {
@@ -337,8 +391,7 @@ public class TransporteViarioApp {
 			}
 		}
 		System.out.println("Cobrador não encontrado!");
-		return null;
-	    
+		return null;	    
     }
     
 	public static Motorista localizaMotorista(String cpfBusca, ArrayList<Motorista> motoristas) {
@@ -350,5 +403,16 @@ public class TransporteViarioApp {
 		System.out.println("Motorista não encontrado!");
 		return null;
 		
+	}
+	
+	public static Veiculo localizaVeiculo(String placaBusca, ArrayList<Veiculo> veiculos) {
+		
+		for (Veiculo veiculo : veiculos) {
+			if (veiculo.getPlaca().equals(placaBusca)) {
+				return veiculo;
+			}
+		}
+		System.out.println("Veiculo não encontrado!");
+		return null;
 	}
 }

@@ -42,6 +42,9 @@ public class Veiculo {
 		this.renavam = renavam;
 		this.ano = ano;
 	}
+	public Veiculo() {
+		
+	}
 	
 	
 	

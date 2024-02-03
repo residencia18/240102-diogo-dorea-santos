@@ -1,13 +1,17 @@
 package transporteViario;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class Jornada {
 	
+	private String codJornada;
 	private Motorista motorista;
 	private Cobrador cobrador;
 	private Veiculo veiculo;
 	private Duration duracaoJornada;
+	private ArrayList<Trajeto> trajetos;
+	
 	public Motorista getMotorista() {
 		return motorista;
 	}
@@ -32,8 +36,18 @@ public class Jornada {
 	public void setDuracaoJornada(Duration duracaoJornada) {
 		this.duracaoJornada = duracaoJornada;
 	}
-	public Jornada(Motorista motorista, Cobrador cobrador, Veiculo veiculo, Duration duracaoJornada) {
+	
+	public String getCodJornada() {
+		return codJornada;
+	}
+	public void setCodJornada(String codJornada) {
+		this.codJornada = codJornada;
+	}
+	//Jornada(codJornada, trajetosAux, motorista, cobrador, veiculo);
+	public Jornada(String codJornada, ArrayList<Trajeto> trajetosAux, Motorista motorista, Cobrador cobrador, Veiculo veiculo) {
 		
+		this.codJornada = codJornada;
+		this.trajetos = trajetosAux;
 		this.motorista = motorista;
 		this.cobrador = cobrador;
 		this.veiculo = veiculo;
