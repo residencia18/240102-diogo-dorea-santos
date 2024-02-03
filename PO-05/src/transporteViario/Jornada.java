@@ -51,17 +51,18 @@ public class Jornada {
 		this.motorista = motorista;
 		this.cobrador = cobrador;
 		this.veiculo = veiculo;
-		this.duracaoJornada = duracaoJornada;
+		//this.duracaoJornada = duracaoJornada;
 	}
 	
-	public void calculaDuracao() {
+	public Duration calculaDuracao() {
 		
 		this.setDuracaoJornada(Duration.ZERO);
-				
 		
+		for(Trajeto trajeto : trajetos) {
+			
+			duracaoJornada = duracaoJornada.plus(trajeto.getDuracaoTrajeto());
+		
+		}
+		return duracaoJornada;	
 	}
-	
-	
-	
-
 }

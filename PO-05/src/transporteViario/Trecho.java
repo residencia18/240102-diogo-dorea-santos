@@ -37,6 +37,7 @@ public class Trecho {
 	public Duration getDuracaoParada() {
 		return duracaoParada;
 	}
+	
 	public ArrayList<Cliente> getEmbarques() {
 		return embarques;
 	}

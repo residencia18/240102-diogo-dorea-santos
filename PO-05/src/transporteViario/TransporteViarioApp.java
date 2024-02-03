@@ -55,7 +55,7 @@ public class TransporteViarioApp {
                     registrarInicioDeTrajeto(jornadas, trajetos);
                     break;
                 case 10:
-                    registrarEmbarqueComCartao(jornadas, passageiros);
+                    registrarEmbarqueComCartao(trechos, pontosDeParada, passageiros);
                     break;
                 case 11:
                     registrarCheckpoint(jornadas, trajetos);
@@ -180,7 +180,7 @@ public class TransporteViarioApp {
 		String cpf = scanner.nextLine();
 		
 		System.out.print("Informe o numero do cartão do passageiro: ");
-		int numeroCartao = scanner.nextInt();
+		String numeroCartao = scanner.nextLine();
 				
 		Card cartaoPessoal = new Card(numeroCartao);
 		Cliente passageiro = new Cliente(nome, cpf, cartaoPessoal);
@@ -333,18 +333,40 @@ public class TransporteViarioApp {
 			jornadas.add(jornada);
 			System.out.println("Jornada criada com sucesso!");
 			System.out.println(jornada.toString());
-		}   
+		}
+     
     }
 
     private static void registrarInicioDeTrajeto(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos) {
         // Implemente a lógica para registrar o início de um trajeto
         // ...
     	
+    	
     }
 
-    private static void registrarEmbarqueComCartao(ArrayList<Jornada> jornadas, ArrayList<Cliente> passageiros) {
+    private static void registrarEmbarqueComCartao(ArrayList<Trecho> trechos, ArrayList<PontoParada> pontosDeParada, ArrayList<Cliente> passageiros) {
         // Implemente a lógica para registrar o embarque de um passageiro com cartão
         // ...
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.println("Informe o numero do cartão:");
+		String numCartao = scanner.nextLine();
+		System.out.println("Informe o codigo do ponto de parada:");
+		String codPontoParada = scanner.nextLine();
+		System.out.println("informe o codigo do trecho:");
+		String codTrecho = scanner.nextLine();
+		Trecho trecho = new Trecho();
+		trecho = localizaTrecho(codTrecho, trechos);
+		PontoParada pontoParada = new PontoParada();
+		pontoParada = localizaPontoParada(codPontoParada, pontosDeParada);
+		Cliente passageiro = new Cliente();
+		passageiro = localizaCliente(numCartao, passageiros);
+		if (trecho.getOrigem().equals(pontoParada)) {
+			
+			trecho.registraEmbarque(passageiro);
+			System.out.println("Passageiro registrado com sucesso");
+		}
+		
+    	
     }
 
     private static void registrarCheckpoint(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos) {
@@ -401,6 +423,18 @@ public class TransporteViarioApp {
 			}
 		}
 		System.out.println("Motorista não encontrado!");
+		return null;
+		
+	}
+	
+	public static Cliente localizaCliente(String cardNumber, ArrayList<Cliente> passageiros) {
+		
+		for (Cliente passageiro : passageiros) {
+			if (passageiro.getCartaoPessoal().getCardNumber().equals(cardNumber)) {
+				return passageiro;
+			}
+		}
+		System.out.println("Passageiro não encontrado!");
 		return null;
 		
 	}

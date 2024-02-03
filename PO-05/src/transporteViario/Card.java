@@ -2,13 +2,13 @@ package transporteViario;
 
 public class Card {
 	
-	private int cardNumber;
+	private String cardNumber;
 
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 
-	public Card(int cardNumber) {
+	public Card(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 

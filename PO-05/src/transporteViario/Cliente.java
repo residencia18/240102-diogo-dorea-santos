@@ -16,6 +16,10 @@ public class Cliente extends Pessoa{
 		super(nome, cpf);
 		this.cartaoPessoal = cartaoPessoal;
 	}
+	
+	public Cliente() {
+		
+	}
 
 	@Override
 	public String toString() {
