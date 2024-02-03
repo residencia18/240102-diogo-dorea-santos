@@ -43,7 +43,7 @@ public class Jornada {
 	public void setCodJornada(String codJornada) {
 		this.codJornada = codJornada;
 	}
-	//Jornada(codJornada, trajetosAux, motorista, cobrador, veiculo);
+	
 	public Jornada(String codJornada, ArrayList<Trajeto> trajetosAux, Motorista motorista, Cobrador cobrador, Veiculo veiculo) {
 		
 		this.codJornada = codJornada;
@@ -51,7 +51,7 @@ public class Jornada {
 		this.motorista = motorista;
 		this.cobrador = cobrador;
 		this.veiculo = veiculo;
-		//this.duracaoJornada = duracaoJornada;
+		this.duracaoJornada = calculaDuracao();
 	}
 	
 	public Duration calculaDuracao() {
