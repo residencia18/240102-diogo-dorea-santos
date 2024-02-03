@@ -35,7 +35,11 @@ public class FaturaController {
 		}
 	}
 	
-	
+	/*
+	 * Nova assinatura do metodo realizarLeitura() com objetivo de realizar
+	 * os testes Junit da regra de negocio, enviando diretamente um objeto Imovel
+	 * e o valor da leitura
+	 */
 	public static void realizarLeitura(Imovel imovel, int leitura) throws Exception {
 		System.out.println("\n======================== Realizar leitura do imóvel ========================");		
 		Imovel imovelSelecionado = imovel;

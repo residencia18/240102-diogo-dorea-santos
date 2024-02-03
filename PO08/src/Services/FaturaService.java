@@ -3,7 +3,6 @@ package Services;
 import java.util.ArrayList;
 import java.util.List;
 
-import Models.Cliente;
 import Models.Fatura;
 import Models.Imovel;
 
