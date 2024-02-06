@@ -6,6 +6,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Persistence;
 
 @Entity
@@ -17,6 +19,9 @@ public class Estudante {
 	private String nome;
 	private String email;
 	private int matricula;
+	@ManyToOne
+	@JoinColumn(name = "codCurso")
+	private Curso curso;
 	
 	public int getId() {
 		return id;
@@ -42,12 +47,13 @@ public class Estudante {
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
 	}
-	public Estudante(String nome, String email, int matricula) {
+	public Estudante(String nome, String email, int matricula, Curso curso) {
 		
 		this.id = null;
 		this.nome = nome;
 		this.email = email;
 		this.matricula = matricula;
+		this.curso = curso;
 	}
 	
 	public Estudante() {
@@ -59,10 +65,13 @@ public class Estudante {
 		return "Estudante [id=" + id + ", nome=" + nome + ", email=" + email + ", matricula=" + matricula + "]";
 	}
 	
+	
 	public static void main(String[] args) {
+		/*
 		Estudante e1 = new Estudante("Diogo", "diogo@cepedi.com", 123);
 		Estudante e2 = new Estudante("Alan", "alan@cepedi.com", 456);
 		Estudante e3 = new Estudante("Alexandre", "alexandre@cepedi.com", 789);
+		*/
 		
 		/*
 		 * Envia os dados para o BD
