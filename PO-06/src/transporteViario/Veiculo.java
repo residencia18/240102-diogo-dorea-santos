@@ -3,7 +3,7 @@ package transporteViario;
 public class Veiculo {
 	
 	private String placa, chassi, fabricante, renavam;
-	private int ano;
+	private String ano;
 	public String getPlaca() {
 		return placa;
 	}
@@ -28,13 +28,13 @@ public class Veiculo {
 	public void setRenavam(String renavam) {
 		this.renavam = renavam;
 	}
-	public int getAno() {
+	public String getAno() {
 		return ano;
 	}
-	public void setAno(int ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
-	public Veiculo(String placa, String chassi, String fabricante, String renavam, int ano) {
+	public Veiculo(String placa, String chassi, String fabricante, String renavam, String ano) {
 		
 		this.placa = placa;
 		this.chassi = chassi;

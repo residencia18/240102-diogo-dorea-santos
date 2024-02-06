@@ -3,17 +3,17 @@ package transporteViario;
 public class Onibus extends Veiculo{
 	
 	private String modelo;
-	private int numero;
+	private String numero;
 	public String getModelo() {
 		return modelo;
 	}
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	
@@ -23,7 +23,7 @@ public class Onibus extends Veiculo{
 				+ getChassi() + ", Fabricante=" + getFabricante() + ", Renavam=" + getRenavam()
 				+ ", Ano=" + getAno() + "]";
 	}
-	public Onibus(String placa, String renavam, int ano, String chassi, String fabricante, int numero, String modelo) {
+	public Onibus(String placa, String renavam, String ano, String chassi, String fabricante, String numero, String modelo) {
 		super(placa, chassi, fabricante, renavam, ano);
 		this.modelo = modelo;
 		this.numero = numero;

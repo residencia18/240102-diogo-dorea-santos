@@ -1,5 +1,9 @@
 package transporteViario;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -108,17 +112,18 @@ public class TransporteViarioApp {
 		String modelo = scanner.nextLine();
 				
 		System.out.print("Informe o ano do veículo: ");
-		int ano = scanner.nextInt();
+		String ano = scanner.nextLine();
 
         //ToDo: EM implementações futuras solicitar o tipo do veiculo.
 		System.out.print("Informe o numero do veículo: ");
-		int numero = scanner.nextInt();
+		String numero = scanner.nextLine();
 
-		Veiculo veiculo = new Onibus(placa, renavam, ano, chassi, fabricante, numero, modelo);
+		Onibus onibus = new Onibus(placa, renavam, ano, chassi, fabricante, numero, modelo);
 
-        veiculos.add(veiculo);
+        veiculos.add(onibus);
         System.out.println("Veículo cadastrado com sucesso!");
-        System.out.println(veiculo.toString());
+        System.out.println(onibus.toString());
+		salvarVeiculoCSV(onibus);
         //scanner.close();
     }
 
@@ -143,6 +148,7 @@ public class TransporteViarioApp {
 		motoristas.add(motorista);
 		System.out.println("Motorista cadastrado com sucesso!");
 		System.out.println(motorista.toString());
+		salvarMotoristaCSV(motorista);
 		//scanner.close();
     }
 
@@ -164,6 +170,7 @@ public class TransporteViarioApp {
 		cobradores.add(cobrador);
 		System.out.println("Cobrador cadastrado com sucesso!");
 		System.out.println(cobrador.toString());
+		salvarCobradorCSV(cobrador);
 		//scanner.close();
     }
 
@@ -187,6 +194,7 @@ public class TransporteViarioApp {
 		passageiros.add(passageiro);
 		System.out.println("Passageiro cadastrado com sucesso!");
 		System.out.println(passageiro.toString());
+		salvarPassageiroCSV(passageiro);
 		//scanner.close();
     }
 
@@ -449,4 +457,122 @@ public class TransporteViarioApp {
 		System.out.println("Veiculo não encontrado!");
 		return null;
 	}
+	
+	private static void salvarMotoristaCSV(Motorista motorista) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "motoristas.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            
+                bw.append(motorista.getNome())
+                        .append(",")
+                        .append(motorista.getCpf())
+                        .append(",")
+                        .append(motorista.getCnh())
+                        .append(",")
+                        .append(motorista.getCtps())
+                        .append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarCobradorCSV(Cobrador cobrador) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "cobradores.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            
+                bw.append(cobrador.getNome())
+                        .append(",")
+                        .append(cobrador.getCpf())
+                        .append(",")
+                        .append(cobrador.getCtps())
+                        .append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarPassageiroCSV(Cliente passageiro) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "passageiros.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            
+                bw.append(passageiro.getNome())
+                        .append(",")
+                        .append(passageiro.getCpf())
+                        .append(",")
+                        .append(passageiro.getCartaoPessoal().getCardNumber())
+                        .append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarVeiculoCSV(Onibus onibus) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "veiculos.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            
+                bw.append(onibus.getPlaca())
+                        .append(",")
+                        .append(onibus.getRenavam())
+                        .append(",")
+                        .append(onibus.getChassi())
+                        .append("\n")
+		                .append(onibus.getFabricante())
+		                .append("\n")
+		                .append(onibus.getModelo())
+                        .append("\n")
+                        .append(onibus.getAno())
+						.append("\n")
+						.append(onibus.getNumero())
+                        .append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
