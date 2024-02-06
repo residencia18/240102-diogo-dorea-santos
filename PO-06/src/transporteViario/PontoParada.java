@@ -4,7 +4,8 @@ import java.time.LocalTime;
 
 public class PontoParada {
 	
-	private String cep, gps, codPontoParada;
+	private String cep, gps; //para uso futuro
+	private String codPontoParada;
 	private LocalTime horario;
 	
 	public String getCep() {
@@ -31,8 +32,12 @@ public class PontoParada {
 	public void setHorario(LocalTime horario) {
 		this.horario = horario;
 	}
-	
-	
+	public String getCod() {
+		return codPontoParada;
+	}
+	public void setCod(String codPontoParada) {
+		this.codPontoParada = codPontoParada;
+	}
 	@Override
 	public String toString() {
 		return "PontoParada [codPontoParada= " + codPontoParada + ", horario= " + horario + "]";

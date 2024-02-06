@@ -221,6 +221,7 @@ public class TransporteViarioApp {
 		pontosDeParada.add(pontoParada);
 		System.out.println("Ponto de parada cadastrado com sucesso!");
 		System.out.println(pontoParada.toString());
+		salvarPontoParadaCSV(pontoParada);
 		//scanner.close();
     }
 
@@ -251,6 +252,7 @@ public class TransporteViarioApp {
     	trechos.add(trecho);
 		System.out.println("Trecho cadastrado com sucesso!");
 		System.out.println(trecho.toString());
+		salvarTrechoCSV(trecho);
 		//scanner.close();
     }
     
@@ -353,8 +355,7 @@ public class TransporteViarioApp {
     }
 
     private static void registrarEmbarqueComCartao(ArrayList<Trecho> trechos, ArrayList<PontoParada> pontosDeParada, ArrayList<Cliente> passageiros) {
-        // Implemente a lógica para registrar o embarque de um passageiro com cartão
-        // ...
+        
     	Scanner scanner = new Scanner(System.in);
     	System.out.println("Informe o numero do cartão:");
 		String numCartao = scanner.nextLine();
@@ -394,7 +395,7 @@ public class TransporteViarioApp {
     
     public static Trecho localizaTrecho(String codTrecho, ArrayList<Trecho> trechos) {
 		for (Trecho trecho : trechos) {
-			if (trecho.getCodTrecho().equals(codTrecho)) {
+			if (trecho.getCod().equals(codTrecho)) {
 				return trecho;
 			}
 		}
@@ -559,15 +560,70 @@ public class TransporteViarioApp {
                         .append(onibus.getRenavam())
                         .append(",")
                         .append(onibus.getChassi())
-                        .append("\n")
+                        .append(",")
 		                .append(onibus.getFabricante())
-		                .append("\n")
+		                .append(",")
 		                .append(onibus.getModelo())
-                        .append("\n")
+                        .append(",")
                         .append(onibus.getAno())
-						.append("\n")
+						.append(",")
 						.append(onibus.getNumero())
                         .append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarPontoParadaCSV(PontoParada pontoParada) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "pontosdeparada.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            
+                bw.append(pontoParada.getCod())
+                        .append(",")
+                        .append(pontoParada.getHorario().toString())
+                        .append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarTrechoCSV(Trecho trecho) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "trechos.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            
+                bw.append(trecho.getCod())
+                        .append(",")
+                        .append(trecho.getOrigem().getCod())
+                        .append(",")
+                		.append(trecho.getDestino().getCod())
+                		.append(",")
+                		.append(trecho.getDuracaoTrecho().toString())
+                        .append("\n");
+                        
                 bw.close();
             
             System.out.println("Dados salvos no arquivo " + csvFileName);

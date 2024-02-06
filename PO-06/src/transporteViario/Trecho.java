@@ -10,10 +10,10 @@ public class Trecho {
 	private Duration duracaoTrecho = Duration.ZERO, duracaoParada = Duration.ZERO;
 	private ArrayList<Cliente> embarques;
 	
-	public String getCodTrecho() {
+	public String getCod() {
 		return codTrecho;
 	}
-	public void setCodTrecho(String codTrecho) {
+	public void setCod(String codTrecho) {
 		this.codTrecho = codTrecho;
 	}
 	public PontoParada getOrigem() {
