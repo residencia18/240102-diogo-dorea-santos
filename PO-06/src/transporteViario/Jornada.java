@@ -36,12 +36,15 @@ public class Jornada {
 	public void setDuracaoJornada(Duration duracaoJornada) {
 		this.duracaoJornada = duracaoJornada;
 	}
-	
-	public String getCodJornada() {
+	public String getCod() {
 		return codJornada;
 	}
-	public void setCodJornada(String codJornada) {
+	public void setCod(String codJornada) {
 		this.codJornada = codJornada;
+	}
+	
+	public ArrayList<Trajeto> getTrajetos() {
+		return trajetos;
 	}
 	
 	public Jornada(String codJornada, ArrayList<Trajeto> trajetosAux, Motorista motorista, Cobrador cobrador, Veiculo veiculo) {

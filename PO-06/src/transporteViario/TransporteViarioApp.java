@@ -61,9 +61,6 @@ public class TransporteViarioApp {
                 case 10:
                     registrarEmbarqueComCartao(trechos, pontosDeParada, passageiros);
                     break;
-                case 11:
-                    registrarCheckpoint(jornadas, trajetos);
-                    break;
                 case 0:
                     System.out.println("Sistema encerrado.");
                     break;
@@ -274,26 +271,24 @@ public class TransporteViarioApp {
 		
 		String resposta = "";
 		do {
-		System.out.print("Informe o codigo do proximo trecho: ");
-		String codProxTrecho = scanner.nextLine();
-		Trecho proxTrecho = new Trecho();
-		proxTrecho = localizaTrecho(codProxTrecho, trechos);
-			if (proxTrecho.getOrigem().equals(trechoOrigem.getDestino())) {
-				trechosAux.add(proxTrecho);
-				trechoOrigem = proxTrecho;
-				System.out.println("Trecho adicionado com sucesso!\nDeseja adicionar outro trecho? Sim ou Nao");
-				resposta = scanner.nextLine();
-				if (resposta.equals("Nao")||resposta.equals("N")||resposta.equals("n")) {
-					
-					Trajeto trajeto = new Trajeto(codTrajeto, trechosAux);
-					trajetos.add(trajeto);
-					System.out.println("Trajeto criado com sucesso!");
-					System.out.println(trajeto.toString());
-					break;
-				}
-			
-			}			
-		} while (resposta.equals("Sim")||resposta.equals("S")||resposta.equals("s"));
+	        System.out.print("Informe o código do próximo trecho: ");
+	        String codProxTrecho = scanner.nextLine();
+	        Trecho proxTrecho = localizaTrecho(codProxTrecho, trechos);
+	        if (proxTrecho != null && proxTrecho.getOrigem().equals(trechosAux.get(trechosAux.size() - 1).getDestino())) {
+	            trechosAux.add(proxTrecho);
+	            System.out.println("Trecho adicionado com sucesso!\nDeseja adicionar outro trecho? Sim ou Não");
+	            resposta = scanner.nextLine();
+	        } else {
+	            System.out.println("O trecho não pode ser adicionado. Certifique-se de que o código do trecho está correto e que está conectado ao último trecho adicionado.");
+	            resposta = "Sim"; // Reiniciar o loop para permitir nova entrada
+	        }
+	    } while (resposta.equalsIgnoreCase("Sim") || resposta.equalsIgnoreCase("S"));
+
+	    Trajeto trajeto = new Trajeto(codTrajeto, trechosAux);
+	    trajetos.add(trajeto);
+	    System.out.println("Trajeto criado com sucesso!");
+	    System.out.println(trajeto.toString());
+	    salvarTrajetoCSV(trajeto);
 	}
     
     private static void cadastrarJornada(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos, ArrayList<Motorista> motoristas,
@@ -350,8 +345,6 @@ public class TransporteViarioApp {
     private static void registrarInicioDeTrajeto(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos) {
         // Implemente a lógica para registrar o início de um trajeto
         // ...
-    	
-    	
     }
 
     private static void registrarEmbarqueComCartao(ArrayList<Trecho> trechos, ArrayList<PontoParada> pontosDeParada, ArrayList<Cliente> passageiros) {
@@ -373,14 +366,7 @@ public class TransporteViarioApp {
 			
 			trecho.registraEmbarque(passageiro);
 			System.out.println("Passageiro registrado com sucesso");
-		}
-		
-    	
-    }
-
-    private static void registrarCheckpoint(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos) {
-        // Implemente a lógica para registrar um checkpoint
-        // ...
+		}	
     }
     
     public static PontoParada localizaPontoParada(String numeroBusca, ArrayList<PontoParada> pontosDeParada) {
@@ -400,14 +386,13 @@ public class TransporteViarioApp {
 			}
 		}
 		System.out.println("Trecho não encontrado!");
-		return null;
-	    
+		return null;    
     }
     
     public static Trajeto localizaTrajeto(String codTrajeto, ArrayList<Trajeto> trajetos) {
 	    
 		for (Trajeto trajeto : trajetos) {
-			if (trajeto.getCodTrajeto().equals(codTrajeto)) {
+			if (trajeto.getCod().equals(codTrajeto)) {
 				return trajeto;
 			}
 		}
@@ -624,6 +609,82 @@ public class TransporteViarioApp {
                 		.append(trecho.getDuracaoTrecho().toString())
                         .append("\n");
                         
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarTrajetoCSV(Trajeto trajeto) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "trajetos.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            	
+				//trajetos.csv: cod, horainicio, horacheckpoint, duracaotrajeto, trecho, trecho, trecho, ...
+                bw.append(trajeto.getCod())
+                        .append(",")
+                        .append(trajeto.getInicio().toString())
+                        .append(",")
+                		.append(trajeto.getCheckPoint().toString())
+                		.append(",")
+                		.append(trajeto.getDuracaoTrajeto().toString())
+                		.append(",");
+                ArrayList<Trecho> trechosAux = trajeto.getTrechos();
+				for(Trecho trecho : trechosAux) {
+					
+					bw.append(trecho.getCod())
+						.append(",");
+				}
+                
+				bw.append("\n");
+                bw.close();
+            
+            System.out.println("Dados salvos no arquivo " + csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	private static void salvarJornadaCSV(Jornada jornada) {
+		String directoryPath = "Arquivos";
+		String csvFileName = "jornadas.csv";
+        
+        try  {
+        	File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+        	File csvOutputFile = new File(directory, csvFileName);
+        	FileWriter fw = new FileWriter(csvOutputFile, true);
+        	BufferedWriter bw = new BufferedWriter(fw);
+            	
+				//jornadas.csv: cod, cpfmotorista, cpfcobrador, plavaveiculo, duracaojornada, trajeto, trajeto, ...
+                bw.append(jornada.getCod())
+                        .append(",")
+                        .append(jornada.getMotorista().getCpf())
+                        .append(",")
+                		.append(jornada.getCobrador().getCpf())
+                		.append(",")
+                		.append(jornada.getVeiculo().getPlaca())
+                		.append(",");
+                ArrayList<Trajeto> trajetosAux = jornada.getTrajetos();
+				for(Trajeto trajeto : trajetosAux) {
+					
+					bw.append(trajeto.getCod())
+						.append(",");
+				}
+                
+				bw.append("\n");
                 bw.close();
             
             System.out.println("Dados salvos no arquivo " + csvFileName);
