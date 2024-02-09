@@ -3,6 +3,7 @@ package dto;
 public class EstudanteDTO {
 	private String nome, email;
 	private int matricula;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -27,6 +28,11 @@ public class EstudanteDTO {
 		this.email = email;
 		this.matricula = matricula;
 	}
+	@Override
+	public String toString() {
+		return "EstudanteDTO [nome=" + nome + ", email=" + email + ", matricula=" + matricula + "]";
+	}
+	
 	
 	
 

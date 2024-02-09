@@ -78,16 +78,13 @@ public class TesteDAO {
 	
 	public static void gerarEstudanteDTO(EntityManager em) {
 
-		
-		String jpql = "SELECT new dto.EstudanteDTO(e.nome, e.email, e.matricula, e.curso.nome) FROM Estudante e";
-		
+		String jpql = "SELECT new dto.EstudanteDTO(e.nome, e.email, e.matricula) FROM Estudante e";
 		TypedQuery<EstudanteDTO> typedQuery =em.createQuery(jpql, EstudanteDTO.class);
 		List<EstudanteDTO> listaEstudanteDTO = typedQuery.getResultList();
 		System.out.println("Estudantes DTO recupera e exibe apenas dados necessarios");
 		for (EstudanteDTO e : listaEstudanteDTO) {
 			System.out.println(e.toString());
 		}
-		
 	}
 	
 	public static void mostrarEstudantesPorCurso(EntityManager em) {
@@ -116,7 +113,7 @@ public class TesteDAO {
 		TesteDAO.listarEstudantePorNome(em);
 		TesteDAO.recuperaNomeEstudantes(em);
 		//Refatorar
-		//TesteDAO.gerarEstudanteDTO(em);
+		TesteDAO.gerarEstudanteDTO(em);
 		TesteDAO.mostrarEstudantesPorCurso(em);
 		emf.close();
 		em.close();
