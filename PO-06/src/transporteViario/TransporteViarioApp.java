@@ -1,7 +1,9 @@
 package transporteViario;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
@@ -23,6 +25,15 @@ public class TransporteViarioApp {
         ArrayList<Trecho> trechos = new ArrayList<>();
         ArrayList<Trajeto> trajetos = new ArrayList<>();
         ArrayList<Jornada> jornadas = new ArrayList<>();
+        
+		lerPassageiroCSV(passageiros);
+		lerMotoristaCSV(motoristas);
+		lerCobradorCSV(cobradores);
+		lerVeiculoCSV(veiculos);
+		lerPontoDeParadaCSV(pontosDeParada);
+		lerTrechoCSV(trechos, pontosDeParada);
+		lerTrajetoCSV(trajetos, trechos);
+		lerJornadaCSV(jornadas, trajetos, motoristas, cobradores, veiculos);
 
         int opcao;
         do {
@@ -115,7 +126,7 @@ public class TransporteViarioApp {
 		System.out.print("Informe o numero do veículo: ");
 		String numero = scanner.nextLine();
 
-		Onibus onibus = new Onibus(placa, renavam, ano, chassi, fabricante, numero, modelo);
+		Onibus onibus = new Onibus(placa, renavam, chassi, fabricante, modelo, ano, numero);
 
         veiculos.add(onibus);
         System.out.println("Veículo cadastrado com sucesso!");
@@ -338,6 +349,7 @@ public class TransporteViarioApp {
 			jornadas.add(jornada);
 			System.out.println("Jornada criada com sucesso!");
 			System.out.println(jornada.toString());
+			salvarJornadaCSV(jornada);
 		}
      
     }
@@ -632,13 +644,13 @@ public class TransporteViarioApp {
             	
 				//trajetos.csv: cod, horainicio, horacheckpoint, duracaotrajeto, trecho, trecho, trecho, ...
                 bw.append(trajeto.getCod())
-                        .append(",")
-                        .append(trajeto.getInicio().toString())
-                        .append(",")
-                		.append(trajeto.getCheckPoint().toString())
-                		.append(",")
-                		.append(trajeto.getDuracaoTrajeto().toString())
-                		.append(",");
+                        .append(",");
+                        //.append(trajeto.getInicio().toString())
+                        //.append(",")
+                		//.append(trajeto.getCheckPoint().toString())
+                		//.append(",")
+                		//.append(trajeto.getDuracaoTrajeto().toString())
+                		//.append(",");
                 ArrayList<Trecho> trechosAux = trajeto.getTrechos();
 				for(Trecho trecho : trechosAux) {
 					
@@ -692,4 +704,241 @@ public class TransporteViarioApp {
             e.printStackTrace();
         }
     }
+	
+	public static void lerMotoristaCSV(ArrayList<Motorista> motoristas) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "motoristas.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				motoristas.add(new Motorista(values[0], values[1], values[2], values[3]));
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void lerCobradorCSV(ArrayList<Cobrador> cobradores) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "cobradores.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				cobradores.add(new Cobrador(values[0], values[1], values[2]));
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void lerVeiculoCSV(ArrayList<Veiculo> veiculos) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "veiculos.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				veiculos.add(new Onibus(values[0], values[1], values[2], values[3], values[4], values[5], values[6]));
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void lerPassageiroCSV(ArrayList<Cliente> passageiros) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "passageiros.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				Card cardAux = new Card(values[2]);
+				passageiros.add(new Cliente(values[0], values[1], cardAux));
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void lerPontoDeParadaCSV(ArrayList<PontoParada> pontosDeParada) {
+
+		String directoryPath = "Arquivos";
+		String csvFileName = "pontosdeparada.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				pontosDeParada.add(new PontoParada(values[0], LocalTime.parse(values[1])));
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void lerTrechoCSV(ArrayList<Trecho> trechos, ArrayList<PontoParada> pontosDeParada) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "trechos.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				PontoParada origem = localizaPontoParada(values[1], pontosDeParada);
+				PontoParada destino = localizaPontoParada(values[2], pontosDeParada);
+				Duration duracao = Duration.parse(values[3]);
+				trechos.add(new Trecho(values[0], origem, destino, duracao));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void lerTrajetoCSV(ArrayList<Trajeto> trajetos, ArrayList<Trecho> trechos) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "trajetos.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				ArrayList<Trecho> trechosAux= new ArrayList<Trecho>();;
+				for(int i = 1; i < values.length; i++) {
+					
+					trechosAux.add(localizaTrecho(values[i], trechos));
+				}
+				
+				Trajeto trajeto = new Trajeto(values[0],trechosAux);
+				for (int i = 1; i < values.length; i++) {
+					trajeto.getTrechos().add(localizaTrecho(values[i], trechos));
+				}
+				trajetos.add(trajeto);
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void lerJornadaCSV(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos, ArrayList<Motorista> motoristas, ArrayList<Cobrador> cobradores, ArrayList<Veiculo> veiculos) {
+		
+		String directoryPath = "Arquivos";
+		String csvFileName = "jornadas.csv";
+		
+		try {
+			
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+			File csvOutputFile = new File(directory, csvFileName);
+			FileReader fr = new FileReader(csvOutputFile);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(",");
+				Motorista motoristaAux = localizaMotorista(values[1], motoristas);
+				Cobrador cobradorAux = localizaCobrador(values[2], cobradores);
+				Veiculo veiculoAux = localizaVeiculo(values[3], veiculos);
+				ArrayList<Trajeto> trajetosAux= new ArrayList<Trajeto>();
+				for(int i = 4; i < values.length; i++) {
+					
+					trajetosAux.add(localizaTrajeto(values[i], trajetos));
+				}
+				
+				Jornada jornada = new Jornada(values[0], trajetosAux,motoristaAux,cobradorAux,veiculoAux);
+				for (int i = 1; i < values.length; i++) {
+					
+					jornada.getTrajetos().add(localizaTrajeto(values[i], trajetos));
+					
+				}
+				jornadas.add(jornada);
+			}
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
 }

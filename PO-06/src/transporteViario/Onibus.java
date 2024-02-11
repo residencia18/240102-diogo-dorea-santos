@@ -23,7 +23,7 @@ public class Onibus extends Veiculo{
 				+ getChassi() + ", Fabricante=" + getFabricante() + ", Renavam=" + getRenavam()
 				+ ", Ano=" + getAno() + "]";
 	}
-	public Onibus(String placa, String renavam, String ano, String chassi, String fabricante, String numero, String modelo) {
+	public Onibus(String placa, String renavam, String chassi, String fabricante, String modelo, String ano, String numero) {
 		super(placa, chassi, fabricante, renavam, ano);
 		this.modelo = modelo;
 		this.numero = numero;
