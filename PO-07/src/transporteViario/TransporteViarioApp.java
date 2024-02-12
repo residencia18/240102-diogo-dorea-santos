@@ -28,14 +28,18 @@ public class TransporteViarioApp {
         ArrayList<Trajeto> trajetos = new ArrayList<>();
         ArrayList<Jornada> jornadas = new ArrayList<>();
         
-		lerPassageiroCSV(passageiros);
-		lerMotoristaCSV(motoristas);
-		lerCobradorCSV(cobradores);
-		lerVeiculoCSV(veiculos);
-		lerPontoDeParadaCSV(pontosDeParada);
-		lerTrechoCSV(trechos, pontosDeParada);
-		lerTrajetoCSV(trajetos, trechos);
-		lerJornadaCSV(jornadas, trajetos, motoristas, cobradores, veiculos);
+		Persistencia.recuperaPassageiro(passageiros);
+		Persistencia.recuperaMotorista(motoristas);
+		Persistencia.recuperaCobrador(cobradores);
+		Persistencia.recuperaVeiculo(veiculos);
+        //lerPassageiroCSV(passageiros);
+		//lerMotoristaCSV(motoristas);
+		//lerCobradorCSV(cobradores);
+		//lerVeiculoCSV(veiculos);
+		//lerPontoDeParadaCSV(pontosDeParada);
+		//lerTrechoCSV(trechos, pontosDeParada);
+		//lerTrajetoCSV(trajetos, trechos);
+		//lerJornadaCSV(jornadas, trajetos, motoristas, cobradores, veiculos);
 
         int opcao;
         do {
@@ -208,7 +212,7 @@ public class TransporteViarioApp {
 		System.out.println("Passageiro cadastrado com sucesso!");
 		System.out.println(passageiro.toString());
 		//salvarPassageiroCSV(passageiro);
-		Persistencia.salvaCliente(passageiro);
+		Persistencia.salvaPassageiro(passageiro);
 		//scanner.close();
     }
 
@@ -307,7 +311,8 @@ public class TransporteViarioApp {
 	    trajetos.add(trajeto);
 	    System.out.println("Trajeto criado com sucesso!");
 	    System.out.println(trajeto.toString());
-	    salvarTrajetoCSV(trajeto);
+	    Persistencia.salvaTrajeto(trajeto);
+	    //salvarTrajetoCSV(trajeto);
 	}
     
     private static void cadastrarJornada(ArrayList<Jornada> jornadas, ArrayList<Trajeto> trajetos, ArrayList<Motorista> motoristas,
@@ -357,7 +362,8 @@ public class TransporteViarioApp {
 			jornadas.add(jornada);
 			System.out.println("Jornada criada com sucesso!");
 			System.out.println(jornada.toString());
-			salvarJornadaCSV(jornada);
+			Persistencia.salvaJornada(jornada);
+			//salvarJornadaCSV(jornada);
 		}
      
     }
@@ -649,6 +655,7 @@ public class TransporteViarioApp {
     }
 	*/
 	
+	/*
 	private static void salvarTrajetoCSV(Trajeto trajeto) {
 		String directoryPath = "Arquivos";
 		String csvFileName = "trajetos.csv";
@@ -686,7 +693,9 @@ public class TransporteViarioApp {
             e.printStackTrace();
         }
     }
+	*/
 	
+	/*
 	private static void salvarJornadaCSV(Jornada jornada) {
 		String directoryPath = "Arquivos";
 		String csvFileName = "jornadas.csv";
@@ -724,6 +733,7 @@ public class TransporteViarioApp {
             e.printStackTrace();
         }
     }
+	*/
 	
 	public static void lerMotoristaCSV(ArrayList<Motorista> motoristas) {
 		
