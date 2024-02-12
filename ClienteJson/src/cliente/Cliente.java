@@ -37,14 +37,16 @@ public class Cliente {
 	}
 	
 	public static void main(String[] args) {
-				
+		
+		String nomeArquivo = "cliente.json";
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-		Cliente cliente1 = new Cliente("nome do cliente","cpf do cliente", "cnh do cliente");
-		Cliente cliente2 = new Cliente("nome do cliente2","cpf do cliente2", "cnh do cliente2");
+		Cliente cliente1 = new Cliente("Diogo","1234", "4567");
+		Cliente cliente2 = new Cliente("Tamires","7894", "4561");
 		clientes.add(cliente1);
 		clientes.add(cliente2);
 		
-		ClienteJson.salvaCliente("cliente.json", clientes);
+		ClienteJson.salvaCliente(nomeArquivo, clientes);
+		ClienteJson.recuperaCliente(nomeArquivo);
 		
 		
 		
