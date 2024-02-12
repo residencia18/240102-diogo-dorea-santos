@@ -5,11 +5,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import transporteViario.Cliente;
 import transporteViario.Cobrador;
+import transporteViario.Jornada;
 import transporteViario.Motorista;
+import transporteViario.Onibus;
+import transporteViario.PontoParada;
+import transporteViario.Trajeto;
+import transporteViario.Trecho;
 
 public class Persistencia {
 	
@@ -17,7 +23,7 @@ public class Persistencia {
 		
 		try {
 			
-			FileWriter fw = new FileWriter("Arquivos/passageiros.csv");
+			FileWriter fw = new FileWriter("Arquivos/passageiros.json");
 			BufferedWriter bw = new BufferedWriter(fw);
 			
 			String str1 = passageiro.getNome();
@@ -39,7 +45,7 @@ public class Persistencia {
 		
 		try {
 			
-			FileWriter fw = new FileWriter("Arquivos/motoristas.csv");
+			FileWriter fw = new FileWriter("Arquivos/motoristas.json");
 			BufferedWriter bw = new BufferedWriter(fw);
 			
 			String str1 = motorista.getNome();
@@ -63,7 +69,7 @@ public class Persistencia {
 		
 		try {
 			
-			FileWriter fw = new FileWriter("Arquivos/cobradores.csv");
+			FileWriter fw = new FileWriter("Arquivos/cobradores.json");
 			BufferedWriter bw = new BufferedWriter(fw);
 			
 			String str1 = cobrador.getNome();
@@ -81,9 +87,130 @@ public class Persistencia {
 			}
 		
 	}
-
 	
+	public static void salvaVeiculo(Onibus onibus) {
+		
+		try {
+			
+			FileWriter fw = new FileWriter("Arquivos/veiculos.json");
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			String str1 = onibus.getPlaca();
+			String str2 = onibus.getRenavam();
+			String str3 = onibus.getChassi();
+			String str4 = onibus.getFabricante();
+			String str5 = onibus.getModelo();
+			String str6 = onibus.getAno();
+			
+			String json_str = "{\"placa\":\"" + str1 + "\",\"renavam\":\"" + str2 + "\",\"chassi\":\"" + str3 + "\",\"fabricante\":\"" + str4 + "\",\"modelo\":\"" + str5 + "\",\"ano\":\"" + str6 + "\"}";
+			JSONObject my_obj = new JSONObject(json_str);
+			//System.out.println(my_obj);
+			bw.write(my_obj.toString());
+			bw.newLine();
+			bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 	
+	public static void salvaPontoParada(PontoParada pontoParada) {
+		
+		try {
+			
+			FileWriter fw = new FileWriter("Arquivos/pontoParada.json");
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			String str1 = pontoParada.getCod();
+			String str2 = pontoParada.getHorario().toString();
+			String json_str = "{\"cod\":\"" + str1 + "\",\"horario\":\"" + str2 + "\"}";
+			JSONObject my_obj = new JSONObject(json_str);
+			//System.out.println(my_obj);
+			bw.write(my_obj.toString());
+			bw.newLine();
+			bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 	
-
+	public static void salvaTrecho(Trecho trecho) {
+		
+		try {
+			
+			FileWriter fw = new FileWriter("Arquivos/trechos.json");
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			String str1 = trecho.getCod();
+			String str2 = trecho.getOrigem().getCod();
+			String str3 = trecho.getDestino().getCod();
+			String str4 = trecho.getDuracaoParada().toString();
+			String json_str = "{\"codTrecho\":\"" + str1 + "\",\"origem\":\"" + str2 + "\",\"destino\":\"" + str3 + "\",\"duracaoParada\":\"" + str4 + "\"}";
+			JSONObject my_obj = new JSONObject(json_str);
+			JSONArray passageiros = new JSONArray();
+			for(Cliente passageiro : trecho.getEmbarques()) {
+				passageiros.put(passageiro.getCpf());
+			}
+			my_obj.put("passageiros", passageiros);
+			bw.write(my_obj.toString());
+			bw.newLine();
+			bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	public static void salvaTrajeto(Trajeto trajeto) {
+		
+		try {
+			
+			FileWriter fw = new FileWriter("Arquivos/trajetos.json");
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			String str1 = trajeto.getCod();
+			String json_str = "{\"cod\":\"" + str1 + "\"}";
+			
+			JSONObject my_obj = new JSONObject(json_str);
+			JSONArray trechos = new JSONArray();
+			for(Trecho trecho : trajeto.getTrechos()) {
+				trechos.put(trecho.getCod());
+			}
+			my_obj.put("trechos", trechos);
+			bw.write(my_obj.toString());
+			bw.newLine();
+			bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	public static void salvaJornada(Jornada jornada) {
+		
+		try {
+			
+			FileWriter fw = new FileWriter("Arquivos/jornadas.json");
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			String str1 = jornada.getCod();
+			String str2 = jornada.getMotorista().getCpf();
+			String str3 = jornada.getCobrador().getCpf();
+			String str4 = jornada.getVeiculo().getPlaca();
+			String json_str = "{\"codJornada\":\"" + str1 + "\",\"motorista\":\"" + str2 + "\",\"cobrador\":\"" + str3 + "\",\"veiculo\":\"" + str4 + "\"}";
+			JSONObject my_obj = new JSONObject(json_str);
+			JSONArray trajetos = new JSONArray();
+			for(Trajeto trajeto : jornada.getTrajetos()) {
+				trajetos.put(trajeto.getCod());
+			}
+			my_obj.put("trajetos", trajetos);
+			bw.write(my_obj.toString());
+			bw.newLine();
+			bw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 }

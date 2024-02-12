@@ -133,7 +133,8 @@ public class TransporteViarioApp {
         veiculos.add(onibus);
         System.out.println("Veículo cadastrado com sucesso!");
         System.out.println(onibus.toString());
-		salvarVeiculoCSV(onibus);
+		Persistencia.salvaVeiculo(onibus);
+		//salvarVeiculoCSV(onibus);
         //scanner.close();
     }
 
@@ -234,7 +235,8 @@ public class TransporteViarioApp {
 		pontosDeParada.add(pontoParada);
 		System.out.println("Ponto de parada cadastrado com sucesso!");
 		System.out.println(pontoParada.toString());
-		salvarPontoParadaCSV(pontoParada);
+		Persistencia.salvaPontoParada(pontoParada);
+		//salvarPontoParadaCSV(pontoParada);
 		//scanner.close();
     }
 
@@ -265,7 +267,8 @@ public class TransporteViarioApp {
     	trechos.add(trecho);
 		System.out.println("Trecho cadastrado com sucesso!");
 		System.out.println(trecho.toString());
-		salvarTrechoCSV(trecho);
+		Persistencia.salvaTrecho(trecho);
+		//salvarTrechoCSV(trecho);
 		//scanner.close();
     }
     
@@ -550,6 +553,7 @@ public class TransporteViarioApp {
     }
 	*/
 	
+	/*
 	private static void salvarVeiculoCSV(Onibus onibus) {
 		String directoryPath = "Arquivos";
 		String csvFileName = "veiculos.csv";
@@ -584,7 +588,9 @@ public class TransporteViarioApp {
             e.printStackTrace();
         }
     }
+	*/
 	
+	/*
 	private static void salvarPontoParadaCSV(PontoParada pontoParada) {
 		String directoryPath = "Arquivos";
 		String csvFileName = "pontosdeparada.csv";
@@ -609,7 +615,9 @@ public class TransporteViarioApp {
             e.printStackTrace();
         }
     }
+	*/
 	
+	/*
 	private static void salvarTrechoCSV(Trecho trecho) {
 		String directoryPath = "Arquivos";
 		String csvFileName = "trechos.csv";
@@ -639,6 +647,7 @@ public class TransporteViarioApp {
             e.printStackTrace();
         }
     }
+	*/
 	
 	private static void salvarTrajetoCSV(Trajeto trajeto) {
 		String directoryPath = "Arquivos";
