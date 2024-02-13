@@ -83,6 +83,7 @@ public class Fatura {
 	public void setQuitada(boolean quitada) {
 		this.quitada = quitada;
 	}
+	
 	public String getDataFormatada() {
         return Util.formatDate(dataEmissao);
     }
