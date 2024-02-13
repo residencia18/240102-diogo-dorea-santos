@@ -21,7 +21,6 @@ import transporteViario.Veiculo;
 import transporteViario.PontoParada;
 import transporteViario.Trajeto;
 import transporteViario.Trecho;
-import transporteViario.TransporteViarioApp;
 
 public class Persistencia {
 	
