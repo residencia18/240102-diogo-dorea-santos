@@ -35,46 +35,6 @@ public class FaturaController {
 		}
 	}
 	
-	/*
-	 * Nova assinatura do metodo realizarLeitura() com objetivo de realizar
-	 * os testes Junit da regra de negocio, enviando diretamente um objeto Imovel
-	 * e o valor da leitura
-	 */
-	public static void realizarLeitura(Imovel imovel, int leitura) throws Exception {
-		System.out.println("\n======================== Realizar leitura do imóvel ========================");		
-		Imovel imovelSelecionado = imovel;
-		
-		try {
-			if (imovelSelecionado != null) {			
-				//System.out.print("\nValor da leitura: ");
-				//int leitura = Util.stringToInt(entrada.nextLine());
-				
-				Fatura fatura = FaturaService.gerarFatura(imovelSelecionado, leitura);
-				
-				System.out.println("\nImprimindo fatura...\n");
-				imprimeFatura(fatura);
-			}
-			else {
-				System.out.println("\nNão existem dados para serem exibidos.");
-			}
-		}catch (Exception e) {
-			
-			System.out.println("\nErro ao gerar fatura: " + e.getMessage());
-		}
-		
-		/*
-		try {
-			Fatura fatura = FaturaService.gerarFatura(imovelSelecionado, leitura);
-			
-			System.out.println("\nImprimindo fatura...\n");
-			imprimeFatura(fatura);
-		}
-		catch (Exception e) {
-			System.out.println("\nErro ao gerar fatura: " + e.getMessage());
-		}
-		*/
-	}
-	
 	public static void listarFaturas(boolean isQuitada) {
 		String titulo = isQuitada ? "quitadas" : "";
 		System.out.println("\n======================== Listar faturas " + titulo +" ========================\n");
