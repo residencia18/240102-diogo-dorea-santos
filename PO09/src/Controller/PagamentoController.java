@@ -11,6 +11,7 @@ import Services.FaturaService;
 import Services.ImovelService;
 import Services.PagamentoService;
 import Utils.Util;
+import dao.PagamentoDAO;
 
 public class PagamentoController {
 	
@@ -46,6 +47,7 @@ public class PagamentoController {
 			}
 			
 			PagamentoService.addPagamento(pagamento);
+			PagamentoDAO.create(pagamento, faturaSelecionada);
 		}
 		else {
 			System.out.println("\nNão existem dados para serem exibidos.");

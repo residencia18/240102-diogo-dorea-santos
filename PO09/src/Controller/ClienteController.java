@@ -10,6 +10,7 @@ import Models.Imovel;
 import Services.ClienteService;
 import Services.ImovelService;
 import Utils.Util;
+import dao.ClienteDAO;
 
 public class ClienteController {
 	
@@ -34,6 +35,7 @@ public class ClienteController {
 			cliente.setImoveis(imoveis);
 			
 			ClienteService.addCliente(cliente);
+			ClienteDAO.create(cliente, imovel);
 		}
 		else {
 			System.out.println("\\nNão existem dados para serem exibidos.");

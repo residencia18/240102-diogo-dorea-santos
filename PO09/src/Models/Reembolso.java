@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Reembolso {
 	
+	Integer id;
 	private Pagamento pagamento;
 	private double valor;
 	private Date data;
@@ -16,6 +17,16 @@ public class Reembolso {
 		this.pagamento = pagamento;
 		this.valor = pagamento.getValor() + valorTodosPagamentos - getFatura().getValorCalculado();
 		this.data = new Date();
+	}
+
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Pagamento getPagamento() {

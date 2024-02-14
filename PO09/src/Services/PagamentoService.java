@@ -18,6 +18,14 @@ public class PagamentoService {
 		return pagamentos;
 	}
 	
+	
+	
+	public static void setPagamentos(List<Pagamento> pagamentos) {
+		PagamentoService.pagamentos = pagamentos;
+	}
+
+
+
 	public static void addPagamento(Pagamento p) {
 		if (pagamentos == null) {
 			pagamentos = new ArrayList<>();

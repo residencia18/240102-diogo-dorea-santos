@@ -18,6 +18,14 @@ public class ClienteService {
 		return clientes;
 	}
 	
+	
+	
+	public static void setClientes(List<Cliente> clientes) {
+		ClienteService.clientes = clientes;
+	}
+
+
+
 	public static void addCliente(Cliente c) {
 		if (clientes == null) {
 			clientes = new ArrayList<>();

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Models.Imovel;
 import Services.ImovelService;
+import dao.ImovelDAO;
 
 public class ImovelController {
 	
@@ -21,6 +22,7 @@ public class ImovelController {
 		
 		Imovel imovel = new Imovel(matricula, endereco);
 		ImovelService.addImovel(imovel);
+		ImovelDAO.create(imovel);
 	}
 	
 	public static void listarImoveis() {

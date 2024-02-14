@@ -18,6 +18,14 @@ public class FaturaService {
 		return faturas;
 	}
 	
+	
+	
+	public static void setFaturas(List<Fatura> faturas) {
+		FaturaService.faturas = faturas;
+	}
+
+
+
 	public static void addFatura(Fatura f) {
 		if (faturas == null) {
 			faturas = new ArrayList<>();

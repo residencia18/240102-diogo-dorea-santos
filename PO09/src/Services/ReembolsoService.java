@@ -17,7 +17,11 @@ public class ReembolsoService {
 		
 		return reembolsos;
 	}
-	
+		
+	public static void setReembolsos(List<Reembolso> reembolsos) {
+		ReembolsoService.reembolsos = reembolsos;
+	}
+
 	public static void addReembolso(Reembolso p) {
 		if (reembolsos == null) {
 			reembolsos = new ArrayList<>();

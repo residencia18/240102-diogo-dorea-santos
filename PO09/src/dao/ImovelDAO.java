@@ -12,21 +12,17 @@ import Models.Imovel;
 
 public class ImovelDAO {
 	
-	public static void create(Imovel i, Cliente c) {
+	public static void create(Imovel i) {
 		
 		try {
 			Connection conn = DAO.conectar();
-			String query = "INSERT INTO imovel (cpfcliente, matricula, endereco, leituraanterior, leituraatual) VALUES (?, ?, ?, ?, ?)";
+			String query = "INSERT INTO imovel (matricula, endereco, leituraanterior, leituraatual) VALUES (?, ?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(query);
-			//u.toString();
-			ps.setString(1, c.getCpf());
-			ps.setString(2, i.getMatricula());
-			ps.setString(3, i.getEndereco());
-			ps.setDouble(4, i.getLeituraAnterior());
-			ps.setDouble(5, i.getLeituraAtual());
-						
-			//System.out.println(query);
-			//System.out.println(ps.toString());
+			
+			ps.setString(1, i.getMatricula());
+			ps.setString(2, i.getEndereco());
+			ps.setDouble(3, i.getLeituraAnterior());
+			ps.setDouble(4, i.getLeituraAtual());
 			ps.execute();
 			
 		}
@@ -64,13 +60,13 @@ public class ImovelDAO {
 		Imovel i = null;
 		try {
 			Connection conn = DAO.conectar();
-			String query = "SELECT matricula, endereco, leituraanterior, leituraatual FROM imovel WHERE matricula = ?";
+			String query = "SELECT endereco, leituraanterior, leituraatual FROM imovel WHERE matricula = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, matricula);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				i = new Imovel();
-				i.setMatricula(rs.getString("matricula"));
+				i.setMatricula(matricula);
 				i.setEndereco(rs.getString("endereco"));
 				i.setLeituraAnterior(rs.getInt("leituraanterior"));
 				i.setLeituraAtual(rs.getInt("leituraatual"));

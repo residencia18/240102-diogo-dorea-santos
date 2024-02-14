@@ -17,6 +17,14 @@ public class ImovelService {
 		return imoveis;
 	}
 	
+	
+	
+	public static void setImoveis(List<Imovel> imoveis) {
+		ImovelService.imoveis = imoveis;
+	}
+
+
+
 	public static void addImovel(Imovel i) {
 		if (imoveis == null) {
 			imoveis = new ArrayList<>();

@@ -11,6 +11,7 @@ import Services.ClienteService;
 import Services.FaturaService;
 import Services.ImovelService;
 import Utils.Util;
+import dao.FaturaDAO;
 
 public class FaturaController {
 	
@@ -26,6 +27,7 @@ public class FaturaController {
 			int leitura = Util.stringToInt(entrada.nextLine());
 			
 			Fatura fatura = FaturaService.gerarFatura(imovelSelecionado, leitura);
+			FaturaDAO.create(fatura, imovelSelecionado);
 			
 			System.out.println("\nImprimindo fatura...\n");
 			imprimeFatura(fatura);

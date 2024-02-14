@@ -6,6 +6,7 @@ import Utils.Util;
 
 public class Fatura {
 	
+	private Integer id;
 	private Imovel imovel;
 	private int valorConsumo;
 	private Date dataEmissao;
@@ -27,6 +28,16 @@ public class Fatura {
         this.valorCalculado = 10 * valorConsumo;
         this.quitada = false;
     }
+
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Imovel getImovel() {
 		return imovel;

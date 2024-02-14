@@ -6,18 +6,20 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Models.Cliente;
+import Models.Imovel;
 
 public class ClienteDAO {
 	
-public static void create(Cliente c) {
+public static void create(Cliente c, Imovel i) {
 		
 		try {
 			Connection conn = DAO.conectar();
-			String query = "INSERT INTO cliente (nome, cpf) VALUES (?, ?)";
+			String query = "INSERT INTO cliente (nome, cpf, matriculaimovel) VALUES (?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(query);
 			//u.toString();
 			ps.setString(1, c.getNome());
 			ps.setString(2, c.getCpf());
+			ps.setString(3, i.getMatricula());
 			ps.execute();
 			
 		}

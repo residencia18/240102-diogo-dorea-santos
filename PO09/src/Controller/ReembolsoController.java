@@ -9,6 +9,7 @@ import Models.Pagamento;
 import Models.Reembolso;
 import Services.FaturaService;
 import Services.ReembolsoService;
+import dao.ReembolsoDAO;
 
 public class ReembolsoController {
 	
@@ -18,6 +19,7 @@ public class ReembolsoController {
 		Reembolso reembolso = new Reembolso(pagamento, valorTodosPagamentos);
 		System.out.print("\nEste pagamento gerou um reembolso no valor de: " + reembolso.getValor());
 		ReembolsoService.addReembolso(reembolso);
+		ReembolsoDAO.create(reembolso, pagamento);
 	}
 
 	public static void listarTodos() {
