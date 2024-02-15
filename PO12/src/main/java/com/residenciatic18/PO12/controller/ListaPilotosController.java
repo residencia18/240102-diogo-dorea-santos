@@ -15,7 +15,7 @@ public class ListaPilotosController {
 	//private static ArrayList<Piloto> pilotos = ListaPilotosController.getPilotos();
 	
 	@RequestMapping("/todos")
-	public ArrayList<Piloto> getPilotos() {
+	public static ArrayList<Piloto> getPilotos() {
 		
 		try {
 			String nomeArquivo = "pilotos.csv";
@@ -51,6 +51,29 @@ public class ListaPilotosController {
 	@RequestMapping("/brasileiros")
 	public ArrayList<Piloto> getPilotosBrasileiros() {
 		
+		
+				
+			
+			ArrayList<Piloto> pilotos = ListaPilotosController.getPilotos();
+			ArrayList<Piloto> brasileiros = new ArrayList<>();
+			for (Piloto p : pilotos) {
+				
+				if (p.getPais().equals("Brasil")) {
+					brasileiros.add(p);
+				}
+				
+			}
+				
+			return brasileiros;
+			
+			
+		}
+		
+	
+	
+	@RequestMapping("/top5")
+	public ArrayList<Piloto> getPilotosTop5() {
+		
 		try {
 			String nomeArquivo = "pilotos.csv";
 			FileReader fr = new FileReader(nomeArquivo);
@@ -62,7 +85,7 @@ public class ListaPilotosController {
 				
 				String[] dados = linha.split(";");
 				Piloto p = new Piloto(dados[0], dados[1], Integer.parseInt(dados[2]));
-				if (p.getPais().equals("Brasil")) {
+				if (p.getVitorias() >= 5) {
 					pilotos.add(p);
 				}
 				linha = br.readLine();
@@ -76,8 +99,6 @@ public class ListaPilotosController {
 		//System.out.println(pilotos.toString());
 		return null;
 	}
-	
-	
 		
 	
 
