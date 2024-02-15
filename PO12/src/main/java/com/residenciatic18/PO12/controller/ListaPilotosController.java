@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -108,6 +111,7 @@ public class ListaPilotosController {
 			
 		}
 	
+	/*
 	@RequestMapping("/porpais")
 	public ArrayList<String> vitoriasPorPais() {
 		
@@ -131,7 +135,26 @@ public class ListaPilotosController {
 			
 			
 		}
+	*/
 	
+	@RequestMapping("/porpais")
+	public Map<String, Integer> listarVitóriasPorPaís() {
+		ArrayList<Piloto> pilotos = ListaPilotosController.getPilotos();
+        Map<String, Integer> vitóriasPorPaís = new HashMap<>();
+        
+        for (Piloto piloto : pilotos) {
+            String país = piloto.getPais();
+            int vitórias = piloto.getVitorias();
+            vitóriasPorPaís.put(país, vitóriasPorPaís.getOrDefault(país, 0) + vitórias);
+        }
+        
+        Map<String, Integer> vitóriasPorPaísOrdenado = new LinkedHashMap<>();
+        vitóriasPorPaís.entrySet().stream()
+            .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+            .forEachOrdered(entry -> vitóriasPorPaísOrdenado.put(entry.getKey(), entry.getValue()));
+
+        return vitóriasPorPaísOrdenado;
+    }
 	
 		
 	
