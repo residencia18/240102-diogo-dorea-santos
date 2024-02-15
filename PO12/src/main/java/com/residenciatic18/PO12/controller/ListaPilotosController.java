@@ -138,24 +138,53 @@ public class ListaPilotosController {
 	*/
 	
 	@RequestMapping("/porpais")
-	public Map<String, Integer> listarVitóriasPorPaís() {
+	public Map<String, Integer> listarVitoriasPorPais() {
 		ArrayList<Piloto> pilotos = ListaPilotosController.getPilotos();
-        Map<String, Integer> vitóriasPorPaís = new HashMap<>();
+        Map<String, Integer> vitoriasPorPais = new HashMap<>();
         
         for (Piloto piloto : pilotos) {
-            String país = piloto.getPais();
-            int vitórias = piloto.getVitorias();
-            vitóriasPorPaís.put(país, vitóriasPorPaís.getOrDefault(país, 0) + vitórias);
+            String pais = piloto.getPais();
+            int vitorias = piloto.getVitorias();
+            vitoriasPorPais.put(pais, vitoriasPorPais.getOrDefault(pais, 0) + vitorias);
         }
         
-        Map<String, Integer> vitóriasPorPaísOrdenado = new LinkedHashMap<>();
-        vitóriasPorPaís.entrySet().stream()
+        Map<String, Integer> vitoriasPorPaisOrdenado = new LinkedHashMap<>();
+        vitoriasPorPais.entrySet().stream()
             .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-            .forEachOrdered(entry -> vitóriasPorPaísOrdenado.put(entry.getKey(), entry.getValue()));
+            .forEachOrdered(entry -> vitoriasPorPaisOrdenado.put(entry.getKey(), entry.getValue()));
 
-        return vitóriasPorPaísOrdenado;
+        return vitoriasPorPaisOrdenado;
     }
 	
+	@RequestMapping("/mediaporpais")
+	public Map<String, Double> listarMediaVitoriasPorPais() {
+		ArrayList<Piloto> pilotos = ListaPilotosController.getPilotos();
+        Map<String, Integer> totalVitoriasPorPais = new HashMap<>();
+        Map<String, Integer> totalVencedoresPorPais = new HashMap<>();
+
+        for (Piloto piloto : pilotos) {
+            String pais = piloto.getPais();
+            int vitorias = piloto.getVitorias();
+            totalVitoriasPorPais.put(pais, totalVitoriasPorPais.getOrDefault(pais, 0) + vitorias);
+            totalVencedoresPorPais.put(pais, totalVencedoresPorPais.getOrDefault(pais, 0) + 1);
+        }
+
+        Map<String, Double> mediaVitoriasPorPais = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : totalVitoriasPorPais.entrySet()) {
+            String pais = entry.getKey();
+            int totalVitorias = entry.getValue();
+            int totalVencedores = totalVencedoresPorPais.get(pais);
+            double média = (double) totalVitorias / totalVencedores;
+            mediaVitoriasPorPais.put(pais, média);
+        }
+
+        Map<String, Double> mediaVitoriasPorPaisOrdenada = new LinkedHashMap<>();
+        mediaVitoriasPorPais.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(entry -> mediaVitoriasPorPaisOrdenada.put(entry.getKey(), entry.getValue()));
+
+        return mediaVitoriasPorPaisOrdenada;
+    }
 		
 	
 
