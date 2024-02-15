@@ -48,6 +48,35 @@ public class ListaPilotosController {
 		return h;
 	}
 	
+	@RequestMapping("/brasileiros")
+	public ArrayList<Piloto> getPilotosBrasileiros() {
+		
+		try {
+			String nomeArquivo = "pilotos.csv";
+			FileReader fr = new FileReader(nomeArquivo);
+			BufferedReader br = new BufferedReader(fr);	
+			
+			ArrayList<Piloto> pilotos = new ArrayList<>();
+			String linha = br.readLine();
+			while(linha != null) {
+				
+				String[] dados = linha.split(";");
+				Piloto p = new Piloto(dados[0], dados[1], Integer.parseInt(dados[2]));
+				if (p.getPais().equals("Brasil")) {
+					pilotos.add(p);
+				}
+				linha = br.readLine();
+			}
+			br.close();
+			fr.close();
+			return pilotos;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//System.out.println(pilotos.toString());
+		return null;
+	}
+	
 	
 		
 	
