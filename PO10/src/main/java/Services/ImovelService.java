@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Imovel;
+import Utils.EntityManagerUtil;
+import dao.ImovelDAO;
 
 public class ImovelService {
 	
@@ -31,6 +33,8 @@ public class ImovelService {
 		}
 		
 		imoveis.add(i);
+		ImovelDAO.create(i, EntityManagerUtil.getEntityManager());
+		
 	}
 	
 	public static void removeImovel(Imovel i) {

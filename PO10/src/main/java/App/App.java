@@ -20,14 +20,14 @@ public class App {
 		
 		//Apenas para testes
 		//Mock.gerarDadosAleatorios();
-		
+		/*
 		ImovelService.setImoveis(ImovelDAO.readAll());
 		ClienteService.setClientes(ClienteDAO.readAll());
 		FaturaService.setFaturas(FaturaDAO.readAll());
 		PagamentoService.setPagamentos(PagamentoDAO.readAll());
 		ReembolsoService.setReembolsos(ReembolsoDAO.readAll());
-		
 		DAO.conectar();
+		 */
 		
 		Menu.menuPrincipal();
 

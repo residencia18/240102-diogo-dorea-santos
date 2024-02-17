@@ -22,7 +22,7 @@ public class ImovelController {
 		
 		Imovel imovel = new Imovel(matricula, endereco);
 		ImovelService.addImovel(imovel);
-		ImovelDAO.create(imovel);
+		//ImovelDAO.create(imovel);
 	}
 	
 	public static void listarImoveis() {

@@ -267,7 +267,7 @@ public class Menu {
 				itensMenu.add("[ " + (i+1) + " ] " + imoveis.get(i).getMatricula());
 			}
 			
-			System.out.println("\nMatrículas dos imíveis cadastrados:");
+			System.out.println("\nMatrículas dos imoveis cadastrados:");
 			MenuUtil.montaMenu(itensMenu, "");
 			opcao = MenuUtil.obterOpcao(itensMenu.size());
 			

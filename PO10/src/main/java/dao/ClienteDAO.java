@@ -5,29 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import Models.Cliente;
 import Models.Imovel;
 
 public class ClienteDAO {
 	
-public static void create(Cliente c, Imovel i) {
-		
-		try {
-			Connection conn = DAO.conectar();
-			String query = "INSERT INTO cliente (nome, cpf, matriculaimovel) VALUES (?, ?, ?)";
-			PreparedStatement ps = conn.prepareStatement(query);
-			//u.toString();
-			ps.setString(1, c.getNome());
-			ps.setString(2, c.getCpf());
-			ps.setString(3, i.getMatricula());
-			ps.execute();
-			conn.close();
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+public static void create(Cliente c, EntityManager em) {
+	
+	em.getTransaction().begin();
+	em.persist(c);
+	em.getTransaction().commit();	
 	}
 
 	public static ArrayList<Cliente> readAll(){
@@ -104,50 +95,5 @@ public static void delete(Cliente c){
 		e.printStackTrace();
 	}
 }
-
-
-public static void main(String[] args) {
-	
-	/*
-	//teste de create
-	Cliente c = new Cliente();
-	c.setNome("Joaquim");
-	c.setCpf("123456789");
-	
-	create(c);
-	*/
-	
-	/*
-	//teste de readAll
-	ArrayList<Cliente> clientes = readAll();
-	System.out.println(clientes);
-	*/
-	
-	/*
-	//teste de read
-	
-	Cliente c = new ClienteDAO().read("123456700");
-	System.out.println(c);
-	*/
-	
-	/*
-	//teste de update
-	Cliente c = new Cliente();
-	c.setNome("Joaquim");
-	c.setCpf("123456700");
-	
-	update(c);
-	*/
-	
-	/*
-	//teste de delete
-	Cliente c = new Cliente();
-	c.setNome("Joaquim");
-	c.setCpf("123456789");
-	
-	delete(c);
-	*/
-}
-
 
 }

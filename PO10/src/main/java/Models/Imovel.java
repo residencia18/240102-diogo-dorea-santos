@@ -1,11 +1,25 @@
 package Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Imovel {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String matricula;
 	private String endereco;
 	private int leituraAnterior;
 	private int leituraAtual;
+	@ManyToOne
+	@JoinColumn(name = "codCliente")
+	private Cliente cliente;
 
 	public Imovel() {
 		// TODO Auto-generated constructor stub
@@ -15,7 +29,11 @@ public class Imovel {
 		this.matricula = matricula;
 		this.endereco = endereco;
 	}
-
+	
+	public Integer getId() {
+		return id;
+	}
+	
 	public String getMatricula() {
 		return matricula;
 	}

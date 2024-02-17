@@ -30,12 +30,12 @@ public class ClienteController {
 			
 			Imovel imovel = Menu.menuSelecionarImovel(ImovelService.getImoveis());
 			imoveis.add(imovel);
+			//ImovelService.addImovel(imovel);
 			
 			Cliente cliente = new Cliente(nome, cpf);
 			cliente.setImoveis(imoveis);
 			
 			ClienteService.addCliente(cliente);
-			ClienteDAO.create(cliente, imovel);
 		}
 		else {
 			System.out.println("\\nNão existem dados para serem exibidos.");

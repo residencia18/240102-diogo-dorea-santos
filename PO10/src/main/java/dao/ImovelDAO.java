@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
 import Models.Cliente;
 import Models.Imovel;
 
@@ -12,44 +17,22 @@ import Models.Imovel;
 
 public class ImovelDAO {
 	
-	public static void create(Imovel i) {
+	public static void create(Imovel i,EntityManager em) {
 		
-		try {
-			Connection conn = DAO.conectar();
-			String query = "INSERT INTO imovel (matricula, endereco, leituraanterior, leituraatual) VALUES (?, ?, ?, ?)";
-			PreparedStatement ps = conn.prepareStatement(query);
-			
-			ps.setString(1, i.getMatricula());
-			ps.setString(2, i.getEndereco());
-			ps.setDouble(3, i.getLeituraAnterior());
-			ps.setDouble(4, i.getLeituraAtual());
-			ps.execute();
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}		
+		em.getTransaction().begin();
+		em.persist(i);
+		em.getTransaction().commit();
 	}
 	
-	public static ArrayList<Imovel> readAll(){
-		ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
+	public static ArrayList<Imovel> readAll(EntityManager em){
+		String jpql = "SELECT i FROM Imovel i";
+		ArrayList<Imovel> imoveis = new ArrayList<>();
 		try {
-			Connection conn = DAO.conectar();
-			String query = "SELECT matricula, endereco, leituraanterior, leituraatual FROM imovel";
-			PreparedStatement ps = conn.prepareStatement(query);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				Imovel i = new Imovel();
-				i.setMatricula(rs.getString("matricula"));
-				i.setEndereco(rs.getString("endereco"));
-				i.setLeituraAnterior(rs.getInt("leituraanterior"));
-				i.setLeituraAtual(rs.getInt("leituraatual"));
-				imoveis.add(i);
-				
+			TypedQuery<Imovel> typedQuery =em.createQuery(jpql, Imovel.class);
+			imoveis = (ArrayList<Imovel>) typedQuery.getResultList();
 			}
-			conn.close();
-		}
 		catch (Exception e) {
+			
 			e.printStackTrace();
 		}
 		return imoveis;
@@ -144,6 +127,7 @@ public class ImovelDAO {
 		System.out.println(i.toString());
 		*/
 		
+		/*
 		//teste de update
 		Imovel i = read("1234");
 		System.out.println(i.toString());
@@ -152,6 +136,7 @@ public class ImovelDAO {
 		i.setLeituraAtual(30);
 
 		update(i);
+		*/
 	}
 	
 }

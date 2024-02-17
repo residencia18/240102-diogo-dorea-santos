@@ -5,6 +5,8 @@ import java.util.List;
 
 import Models.Cliente;
 import Models.Imovel;
+import Utils.EntityManagerUtil;
+import dao.ClienteDAO;
 
 public class ClienteService {
 
@@ -17,14 +19,10 @@ public class ClienteService {
 		
 		return clientes;
 	}
-	
-	
-	
+
 	public static void setClientes(List<Cliente> clientes) {
 		ClienteService.clientes = clientes;
 	}
-
-
 
 	public static void addCliente(Cliente c) {
 		if (clientes == null) {
@@ -32,13 +30,13 @@ public class ClienteService {
 		}
 		
 		clientes.add(c);
+		ClienteDAO.create(c, EntityManagerUtil.getEntityManager());	
 	}
 	
 	public static void removeCliente(Cliente c) {
 		clientes.remove(c);
 	}
-
-	// Método para alterar dados do cliente
+	
     public static void alterarDadosCliente(Cliente cliente, String novoNome, String novoCpf) {
         cliente.alterarDados(novoNome, novoCpf);
     }
@@ -56,5 +54,4 @@ public class ClienteService {
 		
 		return null;
 	}
-
 }
