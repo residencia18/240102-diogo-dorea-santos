@@ -2,11 +2,23 @@ package Models;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import Utils.Util;
 
+@Entity
 public class Fatura {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@ManyToOne
+	@JoinColumn(name = "codImovel")
 	private Imovel imovel;
 	private int valorConsumo;
 	private Date dataEmissao;
@@ -29,8 +41,6 @@ public class Fatura {
         this.quitada = false;
     }
 
-	
-	
 	public Integer getId() {
 		return id;
 	}

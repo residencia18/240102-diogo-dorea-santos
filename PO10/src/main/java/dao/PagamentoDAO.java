@@ -5,57 +5,37 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import Models.Fatura;
 import Models.Imovel;
 import Models.Pagamento;
 
 public class PagamentoDAO {
 	
-	public static void create(Pagamento p, Fatura f) {
-		
-		try {
-			Connection conn = DAO.conectar();
-			String query1 = "SELECT id FROM fatura WHERE matriculaimovel = ?";
-			PreparedStatement ps1 = conn.prepareStatement(query1);
-			ps1.setString(1, f.getImovel().getMatricula());
-			ResultSet rs1 = ps1.executeQuery();
-			
-			String query2 = "INSERT INTO pagamento (idfatura, valor, data) VALUES (?,?,?)";
-			PreparedStatement ps = conn.prepareStatement(query2);
-			
-			ps.setString(1, rs1.getString("id"));
-			ps.setDouble(2, p.getValor());
-			java.sql.Date dataSql = new java.sql.Date(p.getData().getTime());
-			ps.setString(3, dataSql.toString());
-			ps.execute();
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}		
+	public static void create(Pagamento p, EntityManager em){ 		
+		em.getTransaction().begin();
+		em.persist(p);
+		em.getTransaction().commit();
+		em.close();	
 	}
 	
-	public static ArrayList<Pagamento> readAll(){
+	public static ArrayList<Pagamento> readAll(EntityManager em){
 		
 		ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
+		
+		String jpql = "SELECT f FROM FATURA F";
+		
 		try {
-			Connection conn = DAO.conectar();
-			String query = "SELECT valor, data FROM pagamento";
-			PreparedStatement ps = conn.prepareStatement(query);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				Pagamento p = new Pagamento();
-				p.setValor(rs.getDouble("valor"));
-				p.setData(rs.getDate("data"));
-				pagamentos.add(p);
-				
+			TypedQuery<Pagamento> typedQuery = em.createQuery(jpql, Pagamento.class);
+			pagamentos = (ArrayList<Pagamento>) typedQuery.getResultList();
 			}
-			conn.close();
-		}
 		catch (Exception e) {
+			
 			e.printStackTrace();
 		}
-		return pagamentos;
+		return pagamentos;	
 	}
 	
 	

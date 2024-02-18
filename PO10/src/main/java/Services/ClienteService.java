@@ -3,6 +3,8 @@ package Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import Models.Cliente;
 import Models.Imovel;
 import Utils.EntityManagerUtil;

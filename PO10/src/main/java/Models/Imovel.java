@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 public class Imovel {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String matricula;
 	private String endereco;
@@ -26,6 +26,7 @@ public class Imovel {
 	}
 
 	public Imovel(String matricula, String endereco) {
+		this.id = null;
 		this.matricula = matricula;
 		this.endereco = endereco;
 	}

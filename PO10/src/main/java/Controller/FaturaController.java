@@ -18,7 +18,7 @@ public class FaturaController {
 	private static Scanner entrada = new Scanner(System.in);
 	
 	public static void realizarLeitura() {
-		System.out.println("\n======================== Realizar leiruta do imóvel ========================");
+		System.out.println("\n======================== Realizar leitura do imóvel ========================");
 		
 		Imovel imovelSelecionado = Menu.menuSelecionarImovel(ImovelService.getImoveis());
 		
@@ -27,7 +27,8 @@ public class FaturaController {
 			int leitura = Util.stringToInt(entrada.nextLine());
 			
 			Fatura fatura = FaturaService.gerarFatura(imovelSelecionado, leitura);
-			FaturaDAO.create(fatura, imovelSelecionado);
+			
+			//FaturaFaturaDAO.create(fatura, imovelSelecionado);
 			
 			System.out.println("\nImprimindo fatura...\n");
 			imprimeFatura(fatura);

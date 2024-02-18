@@ -5,6 +5,8 @@ import java.util.List;
 
 import Models.Fatura;
 import Models.Pagamento;
+import Utils.EntityManagerUtil;
+import dao.PagamentoDAO;
 
 public class PagamentoService {
 	
@@ -32,6 +34,7 @@ public class PagamentoService {
 		}
 		
 		pagamentos.add(p);
+		PagamentoDAO.create(p, EntityManagerUtil.getEntityManager());
 	}
 	
 	public static List<Pagamento> getPagamentosByFatura(Fatura f) {

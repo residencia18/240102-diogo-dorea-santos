@@ -30,10 +30,10 @@ public class ClienteController {
 			
 			Imovel imovel = Menu.menuSelecionarImovel(ImovelService.getImoveis());
 			imoveis.add(imovel);
-			//ImovelService.addImovel(imovel);
 			
 			Cliente cliente = new Cliente(nome, cpf);
 			cliente.setImoveis(imoveis);
+			
 			
 			ClienteService.addCliente(cliente);
 		}

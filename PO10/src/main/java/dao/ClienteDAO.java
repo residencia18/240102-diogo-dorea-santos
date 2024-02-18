@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import Models.Cliente;
 import Models.Imovel;
+import Utils.EntityManagerUtil;
+
 
 public class ClienteDAO {
 	
@@ -18,7 +20,21 @@ public static void create(Cliente c, EntityManager em) {
 	
 	em.getTransaction().begin();
 	em.persist(c);
-	em.getTransaction().commit();	
+	/* Todo: implementar a persistência dos imoveis de um cliente codCliente
+	List<Imovel> imoveis = c.getImoveis();
+	for (Imovel imovel : imoveis) {
+		String jpql = "SELECT i FROM Imovel i WHERE i.matricula = :matricula";
+		Imovel i = null;
+		
+			TypedQuery<Imovel> typedQuery = EntityManagerUtil.getEntityManager().createQuery(jpql, Imovel.class);
+			typedQuery.setParameter("matricula", imovel.getMatricula());
+			i = typedQuery.getSingleResult();
+		em.persist(i);
+	}
+	*/
+	
+	em.getTransaction().commit();
+	em.close();
 	}
 
 	public static ArrayList<Cliente> readAll(){

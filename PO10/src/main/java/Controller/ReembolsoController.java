@@ -19,7 +19,7 @@ public class ReembolsoController {
 		Reembolso reembolso = new Reembolso(pagamento, valorTodosPagamentos);
 		System.out.print("\nEste pagamento gerou um reembolso no valor de: " + reembolso.getValor());
 		ReembolsoService.addReembolso(reembolso);
-		ReembolsoDAO.create(reembolso, pagamento);
+		//ReembolsoDAO.create(reembolso, pagamento);
 	}
 
 	public static void listarTodos() {

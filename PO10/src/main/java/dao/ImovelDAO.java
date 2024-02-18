@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 
 import Models.Cliente;
 import Models.Imovel;
+import Utils.EntityManagerUtil;
 
 
 
@@ -22,6 +23,7 @@ public class ImovelDAO {
 		em.getTransaction().begin();
 		em.persist(i);
 		em.getTransaction().commit();
+		em.close();
 	}
 	
 	public static ArrayList<Imovel> readAll(EntityManager em){
@@ -41,26 +43,20 @@ public class ImovelDAO {
 	
 	public static Imovel read(String matricula){
 		
+		String jpql = "SELECT i FROM Imovel i WHERE i.matricula = :matricula";
 		Imovel i = null;
 		try {
-			Connection conn = DAO.conectar();
-			String query = "SELECT endereco, leituraanterior, leituraatual FROM imovel WHERE matricula = ?";
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, matricula);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				i = new Imovel();
-				i.setMatricula(matricula);
-				i.setEndereco(rs.getString("endereco"));
-				i.setLeituraAnterior(rs.getInt("leituraanterior"));
-				i.setLeituraAtual(rs.getInt("leituraatual"));
-			}
+			
+			TypedQuery<Imovel> typedQuery = EntityManagerUtil.getEntityManager().createQuery(jpql, Imovel.class);
+			typedQuery.setParameter("matricula", matricula);
+			i = typedQuery.getSingleResult();
 		}
 		catch (Exception e) {
+			
 			e.printStackTrace();
 		}
-		return i;
 		
+		return i;
 	}
 	
 	public static void update(Imovel i){
@@ -94,49 +90,4 @@ public class ImovelDAO {
 			e.printStackTrace();
 		}
 	}
-	 
-	public static void main(String[] args) {
-		
-		/*
-		//teste de create
-		Imovel i = new Imovel();
-		i.setMatricula("1234");
-		i.setEndereco("rua");
-		i.setLeituraAnterior(10);
-		i.setLeituraAtual(20);
-		Cliente c = new Cliente();
-		c.setNome("Joaquim");
-		c.setCpf("123456789");
-		
-		create(i, c);
-		*/
-		
-		/*
-		//teste readAll
-		ArrayList<Imovel> imoveis = readAll();
-		for(Imovel i : imoveis) {
-			
-			System.out.println(i.toString());
-			
-		}
-		*/
-		
-		/*
-		//teste de read
-		Imovel i = read("1234");
-		System.out.println(i.toString());
-		*/
-		
-		/*
-		//teste de update
-		Imovel i = read("1234");
-		System.out.println(i.toString());
-
-		i.setEndereco("nova rua");
-		i.setLeituraAtual(30);
-
-		update(i);
-		*/
-	}
-	
 }

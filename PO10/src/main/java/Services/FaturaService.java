@@ -5,6 +5,8 @@ import java.util.List;
 
 import Models.Fatura;
 import Models.Imovel;
+import Utils.EntityManagerUtil;
+import dao.FaturaDAO;
 
 public class FaturaService {
 	
@@ -13,18 +15,13 @@ public class FaturaService {
 	public static List<Fatura> getFaturas() {
 		if (faturas == null) {
 			faturas = new ArrayList<>(); 
-		}
-		
+		}	
 		return faturas;
 	}
-	
-	
-	
+		
 	public static void setFaturas(List<Fatura> faturas) {
 		FaturaService.faturas = faturas;
 	}
-
-
 
 	public static void addFatura(Fatura f) {
 		if (faturas == null) {
@@ -32,6 +29,7 @@ public class FaturaService {
 		}
 		
 		faturas.add(f);
+		FaturaDAO.create(f, EntityManagerUtil.getEntityManager());
 	}
 	
 	public static List<Fatura> getFaturasQuitadas() {
@@ -61,6 +59,7 @@ public class FaturaService {
 	public static Fatura gerarFatura(Imovel imovel, int leituraAtual) {
 		Fatura f = new Fatura(imovel, leituraAtual);
 		addFatura(f);
+		FaturaDAO.create(f, EntityManagerUtil.getEntityManager());
 		return f;
 	}
 

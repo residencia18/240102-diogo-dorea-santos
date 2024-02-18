@@ -5,6 +5,8 @@ import java.util.List;
 
 import Models.Fatura;
 import Models.Reembolso;
+import Utils.EntityManagerUtil;
+import dao.ReembolsoDAO;
 
 public class ReembolsoService {
 	
@@ -22,12 +24,13 @@ public class ReembolsoService {
 		ReembolsoService.reembolsos = reembolsos;
 	}
 
-	public static void addReembolso(Reembolso p) {
+	public static void addReembolso(Reembolso r) {
 		if (reembolsos == null) {
 			reembolsos = new ArrayList<>();
 		}
 		
-		reembolsos.add(p);
+		reembolsos.add(r);
+		ReembolsoDAO.create(r, EntityManagerUtil.getEntityManager());
 	}
 	
 	public static List<Reembolso> getReembolsosByFatura(Fatura f) {

@@ -47,7 +47,7 @@ public class PagamentoController {
 			}
 			
 			PagamentoService.addPagamento(pagamento);
-			PagamentoDAO.create(pagamento, faturaSelecionada);
+			//PagamentoDAO.create(pagamento, faturaSelecionada);
 		}
 		else {
 			System.out.println("\nNão existem dados para serem exibidos.");
