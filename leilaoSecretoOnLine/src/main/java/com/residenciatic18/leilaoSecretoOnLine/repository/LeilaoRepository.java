@@ -8,6 +8,7 @@ import com.residenciatic18.leilaoSecretoOnLine.model.Leilao;
 
 public interface LeilaoRepository extends JpaRepository<Leilao, Long>{
 	
+	
 	List<Leilao> findByStatus(boolean status);
 	
 

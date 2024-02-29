@@ -1,10 +1,18 @@
 package com.residenciatic18.leilaoSecretoOnLine.form;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.residenciatic18.leilaoSecretoOnLine.model.Concorrente;
 import com.residenciatic18.leilaoSecretoOnLine.model.Lance;
 import com.residenciatic18.leilaoSecretoOnLine.model.Leilao;
+import com.residenciatic18.leilaoSecretoOnLine.repository.ConcorrenteRepository;
+import com.residenciatic18.leilaoSecretoOnLine.repository.LeilaoRepository;
 
 public class LanceForm {
+	
+	@Autowired
+	private LeilaoRepository leilaorepository;
+	private ConcorrenteRepository concorrenterepository;
 	
 	private Leilao leilao;
 	private Concorrente concorrente;
@@ -32,6 +40,13 @@ public class LanceForm {
 		super();
 		this.leilao = leilao;
 		this.concorrente = concorrente;
+		this.valor = valor;
+	}
+	
+	public LanceForm(Long idLeilao, Long idConcorrente, double valor) {
+		super();
+		this.leilao = leilaorepository.findById(idLeilao).get();
+		this.concorrente = concorrenterepository.findById(idConcorrente).get();
 		this.valor = valor;
 	}
 	public LanceForm() {

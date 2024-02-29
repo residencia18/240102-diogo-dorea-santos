@@ -94,7 +94,8 @@ public class LanceController {
 	
 	@PostMapping
 	public ResponseEntity<?> inserir(@RequestBody LanceForm lf, UriComponentsBuilder uriBuilder) {
-	    try {
+	    
+		try {
 	        // Verifica se o concorrente existe
 	        Optional<Concorrente> concorrenteOptional = concorrenterepository.findById(lf.getConcorrente().getId());
 	        if (concorrenteOptional.isEmpty()) {
