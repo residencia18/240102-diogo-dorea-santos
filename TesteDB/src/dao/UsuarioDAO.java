@@ -43,7 +43,7 @@ public class UsuarioDAO {
 				u.setEmail(rs.getString("email"));
 				u.setSenha(rs.getString("senha"));
 				usuarios.add(u);
-				usuarios.add(u);
+				conn.close();
 			}
 		}
 		catch (Exception e) {
