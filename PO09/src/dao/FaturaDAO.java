@@ -63,6 +63,7 @@ public class FaturaDAO {
 				}
 				faturas.add(f);
 			}
+			conn.close();
 		}
 		catch (Exception e) {
 		e.printStackTrace();

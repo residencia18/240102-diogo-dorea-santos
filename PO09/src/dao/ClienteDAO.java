@@ -21,11 +21,13 @@ public static void create(Cliente c, Imovel i) {
 			ps.setString(2, c.getCpf());
 			ps.setString(3, i.getMatricula());
 			ps.execute();
+			conn.close();
 			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
+		
 	}
 
 	public static ArrayList<Cliente> readAll(){
@@ -42,6 +44,7 @@ public static void create(Cliente c, Imovel i) {
 			clientes.add(c);
 			
 		}
+		conn.close();
 	}
 	catch (Exception e) {
 		e.printStackTrace();

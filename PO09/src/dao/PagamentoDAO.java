@@ -50,6 +50,7 @@ public class PagamentoDAO {
 				pagamentos.add(p);
 				
 			}
+			conn.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

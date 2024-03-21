@@ -47,6 +47,7 @@ public class ReembolsoDAO {
 				reembolsos.add(r);
 				
 			}
+			conn.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -47,6 +47,7 @@ public class ImovelDAO {
 				imoveis.add(i);
 				
 			}
+			conn.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
