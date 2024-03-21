@@ -11,20 +11,35 @@ class ConfiguracaoTest {
 		
 	Configuracao configuracao = new Configuracao();
 	
-	//caso geral salvar uma senha valida
-	String senha = "ABCDEFGH";
+	//caso 1: caso geral salvar uma senha valida.
+	String alfabeto = "ABCDEFGH";
 	
 	try {
-		configuracao.setAlfabeto(senha);
+		configuracao.setAlfabeto(alfabeto);
 		
 	} catch (Exception e1) {
 		fail("Gerou exceção indevida");
 		e1.printStackTrace();
 	}
 	
-	assertEquals(senha, configuracao.getAlfabeto());
+	assertEquals(alfabeto, configuracao.getAlfabeto());
 	
+	//caso 2: caso especifico salvar uma senha invalida null.
+	alfabeto = null;
 	
+	try {
+		configuracao.setAlfabeto(alfabeto);
+		
+	} catch (Exception e) {
+		assertEquals("O campo 'alfabeto' deve ser preenchido", e.getMessage());
+		e.printStackTrace();
+	}
+	
+	assertFalse(configuracao.getAlfabeto()==null);	
+	}
+	
+	@Test
+	void testSetSenha() {
 		
 	}
 
