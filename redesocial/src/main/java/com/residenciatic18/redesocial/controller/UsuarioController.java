@@ -7,8 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +47,21 @@ public class UsuarioController {
 		return usuariosdto;	
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<UsuarioDTO> getUsuario(@PathVariable Long id, UriComponentsBuilder uriBuilder) {
+		
+		try {
+			Usuario u = usuariorepository.getReferenceById(id);
+			UsuarioDTO udto = new UsuarioDTO(u);
+			uriBuilder.path("/usuarios/{id}");
+			URI uri = uriBuilder.buildAndExpand(u.getId()).toUri();
+			return ResponseEntity.created(uri).body(udto);
+			
+		} catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
+		
+	}
 	/*
 	//@PostMapping recebe um Json controi o usuario,
 	 * salvando-o no banco e retorna um usuarioDTO.
@@ -67,7 +85,7 @@ public class UsuarioController {
 	*/
 	
 	@PostMapping
-	public ResponseEntity inserir(@RequestBody UsuarioForm uf, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<UsuarioDTO> inserir(@RequestBody UsuarioForm uf, UriComponentsBuilder uriBuilder) {
 		
 		Usuario u = uf.criaUsuario();
 		usuariorepository.save(u);//apos o salvamento o usuario ganha o Id
@@ -75,6 +93,43 @@ public class UsuarioController {
 		uriBuilder.path("/usuarios/{id}");
 		URI uri = uriBuilder.buildAndExpand(u.getId()).toUri();
 		return ResponseEntity.created(uri).body(udto);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody UsuarioForm uf) {
+		
+		try {
+			Usuario u = usuariorepository.getReferenceById(id);
+			u.setNome(uf.getNome());
+			u.setEmail(uf.getEmail());
+			u.setSenha(uf.getSenha());
+			usuariorepository.save(u);
+			UsuarioDTO udto = new UsuarioDTO(u);
+			return ResponseEntity.ok(udto);
+			
+		} catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deletar(@PathVariable Long id) {
+		
+		try {
+			Usuario u = usuariorepository.getReferenceById(id);
+			UsuarioDTO udto = new UsuarioDTO(u);
+			usuariorepository.deleteById(id);
+			return ResponseEntity.ok(udto);
+			
+		} catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@DeleteMapping
+	public ResponseEntity<?> deletar() {
+		return ResponseEntity.badRequest().build();
+		
 	}
 	
 	/*
