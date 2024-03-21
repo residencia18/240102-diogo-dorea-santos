@@ -14,7 +14,7 @@
 		<property name="javax.persistence.jdbc.user" value="usmq8502mtxxozll" />
 		<property name="javax.persistence.jdbc.password" value="2H4FsWx6TiHp2wD7kznr" />
 
-		<property name="hibernate.hbm2ddl.auto" value="update" />
+		<property name="hibernate.hbm2ddl.auto" value="create" />
 
 		<!-- https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/dialect/package-summary.html -->
 		<property name="hibernate.dialect" 	value="org.hibernate.dialect.MySQL8Dialect" />
