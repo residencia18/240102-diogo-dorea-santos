@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.residenciatic18.gestorLinhasAereas.form.ModeloAeronaveForm;
 import com.residenciatic18.gestorLinhasAereas.model.ModeloAeronave;
 import com.residenciatic18.gestorLinhasAereas.repository.ModeloAeronaveRepository;
 
@@ -27,7 +31,14 @@ public class ModeloAeronaveController {
 			modeloaeronaves = (ArrayList<ModeloAeronave>) modeloaeronaverepository.findByNome(nome);	
 		}
 		return modeloaeronaves;
-		
+		}
+	
+	@PostMapping
+	public ModeloAeronave inserir(@RequestBody ModeloAeronaveForm af) {
+
+		ModeloAeronave a = af.criaModeloAeronave();
+		modeloaeronaverepository.save(a);
+		return a;
 		
 	}
 }
