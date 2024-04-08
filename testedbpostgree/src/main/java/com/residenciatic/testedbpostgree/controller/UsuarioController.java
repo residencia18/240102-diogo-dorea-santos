@@ -1,9 +1,11 @@
 package com.residenciatic.testedbpostgree.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,11 @@ public class UsuarioController {
 		URI uri = uriBuilder.buildAndExpand(u.getId()).toUri();
 		return ResponseEntity.created(uri).body(u);
 		
+	}
+	
+	@GetMapping
+	public List<Usuario> findAll() {
+		return usuarioRepository.findAll();
 	}
 
 }
