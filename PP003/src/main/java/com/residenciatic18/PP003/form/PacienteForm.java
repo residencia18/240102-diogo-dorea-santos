@@ -5,17 +5,6 @@ import com.residenciatic18.PP003.model.Paciente;
 public class PacienteForm {
 private String nome, telefone, endereco;
 
-	public PacienteForm() {
-		super();
-	}
-
-	public PacienteForm(String nome, String telefone, String endereco) {
-		super();
-		this.nome = nome;
-		this.telefone = telefone;
-		this.endereco = endereco;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -40,12 +29,18 @@ private String nome, telefone, endereco;
 		this.endereco = endereco;
 	}
 	
+	public PacienteForm(String nome, String telefone, String endereco) {
+		super();
+		this.nome = nome;
+		this.telefone = telefone;
+		this.endereco = endereco;
+	}
+	
+	public PacienteForm() {
+		super();
+	}
+
 	public Paciente toModel() {
-		// TODO Auto-generated method stub
-		Paciente p = new Paciente();
-		p.setNome(nome);
-		p.setTelefone(telefone);
-		p.setEndereco(endereco);
-		return p;
+		return new	Paciente(this.nome, this.telefone, this.endereco);
 	}
 }

@@ -10,27 +10,14 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Paciente {
-	private String nome, telefone, endereco;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String nome, telefone, endereco;
+	
 	@OneToMany(mappedBy = "paciente")
 	private List<Resultado> resultados;
-	
-
-	public Paciente() {
-		super();
-	}
-
-	public Paciente(String nome, String telefone, String endereco, Long id) {
-		super();
-		this.nome = nome;
-		this.telefone = telefone;
-		this.endereco = endereco;
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -63,9 +50,21 @@ public class Paciente {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public Paciente(String nome, String telefone, String endereco) {
+		super();
+		this.id = null;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.endereco = endereco;
+	}
 
+	public Paciente() {
+		super();
+	}
 	@Override
 	public String toString() {
 		return "Paciente [nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + "]";
 	}
+
 }
